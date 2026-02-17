@@ -1,6 +1,7 @@
 { self, pkgs, ... }: {
   imports = [
     ../features/homebrew/darwin.nix
+    ../features/chrome/darwin.nix
     ../features/node/darwin.nix
     ../features/zed/darwin.nix
     ../features/karabiner/darwin.nix
