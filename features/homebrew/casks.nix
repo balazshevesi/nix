@@ -9,7 +9,7 @@
     "intellij-idea"
     "jetbrains-toolbox"
     "postman"
-    "wireshark"
+    "wireshark-app"
     # web
     "google-chrome"
     "helium-browser"

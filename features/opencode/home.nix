@@ -3,7 +3,9 @@ let
   opencodeConfig = import ./config/settings.nix;
   opencodeNotifierConfig = import ./config/notifier.nix;
   opencodePackageJson = import ./config/package.nix;
-  opencodeBunLock = import ./config/bun-lock.nix;
+  hasBunLock = builtins.pathExists ./config/bun-lock.nix;
+  opencodeBunLock =
+    if hasBunLock then import ./config/bun-lock.nix else null;
 in {
   home.activation.configureOpencode = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     opencode_dir="$HOME/.config/opencode"
@@ -15,7 +17,9 @@ in {
     install -m 0644 ${pkgs.writeText "opencode.json" (builtins.toJSON opencodeConfig)} "$opencode_dir/opencode.json"
     install -m 0644 ${pkgs.writeText "opencode-notifier.json" (builtins.toJSON opencodeNotifierConfig)} "$opencode_dir/opencode-notifier.json"
     install -m 0644 ${pkgs.writeText "opencode-package.json" (builtins.toJSON opencodePackageJson)} "$opencode_dir/package.json"
+${lib.optionalString hasBunLock ''
     install -m 0644 ${pkgs.writeText "opencode-bun.lock" (builtins.toJSON opencodeBunLock)} "$opencode_dir/bun.lock"
+''}
 
     context7_key="$(/usr/bin/security find-generic-password -a "$USER" -s "context7_api_key" -w 2>/dev/null || true)"
     if [ -n "$context7_key" ]; then

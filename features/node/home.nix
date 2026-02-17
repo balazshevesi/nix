@@ -4,7 +4,7 @@
     nodePackages.typescript-language-server
     nodePackages.eslint
     nodePackages.prettier
-    nodePackages.kill-port
+    # nodePackages.kill-port
   ];
 
   home.sessionPath = [
