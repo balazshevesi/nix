@@ -10,7 +10,7 @@
   auto_update = true;
   context_servers."mcp-server-context7" = {
     enabled = true;
-    settings = { };
+    settings = {};
   };
   text_rendering_mode = "subpixel";
   max_tabs = 99;
@@ -45,13 +45,13 @@
     profiles = {
       debug-and-fix = {
         name = "Debug and fix";
-        tools = { };
+        tools = {};
         enable_all_context_servers = false;
-        context_servers = { };
+        context_servers = {};
       };
       testing = {
         name = "Codex + Context7";
-        tools = { };
+        tools = {};
         enable_all_context_servers = false;
         context_servers."mcp-server-context7".tools = {
           resolve-library-id = true;
@@ -63,7 +63,7 @@
       provider = "copilot_chat";
       model = "gpt-5-mini";
     };
-    model_parameters = [ ];
+    model_parameters = [];
   };
   buffer_font_family = "Mishafi";
   autosave.after_delay.milliseconds = 20000;
@@ -73,49 +73,49 @@
       format_on_save = "on";
       formatter.external = {
         command = "/Users/balazshevesi/.bun/bin/prettier";
-        arguments = [ "--stdin-filepath" "{buffer_path}" ];
+        arguments = ["--stdin-filepath" "{buffer_path}"];
       };
     };
     JavaScript = {
       format_on_save = "on";
       formatter.external = {
         command = "/Users/balazshevesi/.bun/bin/prettier";
-        arguments = [ "--stdin-filepath" "{buffer_path}" ];
+        arguments = ["--stdin-filepath" "{buffer_path}"];
       };
     };
     TSX = {
       format_on_save = "on";
       formatter.external = {
         command = "/Users/balazshevesi/.bun/bin/prettier";
-        arguments = [ "--stdin-filepath" "{buffer_path}" ];
+        arguments = ["--stdin-filepath" "{buffer_path}"];
       };
     };
     CSS = {
       format_on_save = "on";
       formatter.external = {
         command = "/Users/balazshevesi/.bun/bin/prettier";
-        arguments = [ "--stdin-filepath" "{buffer_path}" ];
+        arguments = ["--stdin-filepath" "{buffer_path}"];
       };
     };
     HTML = {
       format_on_save = "on";
       formatter.external = {
         command = "/Users/balazshevesi/.bun/bin/prettier";
-        arguments = [ "--stdin-filepath" "{buffer_path}" ];
+        arguments = ["--stdin-filepath" "{buffer_path}"];
       };
     };
     JSON = {
       format_on_save = "on";
       formatter.external = {
         command = "/Users/balazshevesi/.bun/bin/prettier";
-        arguments = [ "--stdin-filepath" "{buffer_path}" ];
+        arguments = ["--stdin-filepath" "{buffer_path}"];
       };
     };
     JSONC = {
       format_on_save = "on";
       formatter.external = {
         command = "/Users/balazshevesi/.bun/bin/prettier";
-        arguments = [ "--stdin-filepath" "{buffer_path}" ];
+        arguments = ["--stdin-filepath" "{buffer_path}"];
       };
     };
   };
@@ -147,6 +147,7 @@
     dark = "Colorizer Pro";
   };
   auto_install_extensions = {
+    # languages
     "html" = true;
     "csv" = true;
     "nix" = true;
@@ -158,9 +159,10 @@
     "dockerfile" = true;
     "mermaid" = true;
     "git-firefly" = true;
+    "codebook" = true; # spellcheck
+    # other
     "0x96f" = true;
     "bearded-icon-theme" = true;
-    "codebook" = true;
     "colored-zed-icons-theme" = true;
     "colorizer" = true;
     "dracula" = true;
