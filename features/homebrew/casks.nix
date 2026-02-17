@@ -8,5 +8,22 @@
     "antigravity"
     "firefox"
     "wireshark"
+    "claude-code"
+    "discord"
+    "obs"
+    "whatsapp"
+    "steam"
+    "zoom"
+    "postman"
+    "slack"
+    "ledger-wallet"
+    "macwhisper"
+    "ukelele"
+    "intellij-idea"
+    "jetbrains-toolbox"
+    "disk-inventory-x" # deprecated, disable date: 2026-09-01, alternatives: GrandPerspective, Daisydisk
+    "obsidian"
+    "minecraft"
+    "modrinth"
   ];
 }
