@@ -1,0 +1,20 @@
+{
+  sound = true;
+  notification = true;
+  timeout = 5;
+  events = {
+    permission = { sound = true; notification = true; };
+    complete = { sound = true; notification = true; };
+    error = { sound = true; notification = true; };
+  };
+  messages = {
+    permission = "OpenCode needs permission";
+    complete = "OpenCode has finished";
+    error = "OpenCode encountered an error";
+  };
+  sounds = {
+    permission = "/path/to/custom/sound.wav";
+    complete = "/path/to/custom/sound.wav";
+    error = "/path/to/custom/sound.wav";
+  };
+}

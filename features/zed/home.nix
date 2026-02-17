@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 let
-  zedSettings = import ./settings.nix;
-  zedKeymap = import ./keymap.nix;
+  zedSettings = import ./config/settings.nix;
+  zedKeymap = import ./config/keymap.nix;
 in {
   home.activation.configureZed = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     zed_dir="$HOME/.config/zed"

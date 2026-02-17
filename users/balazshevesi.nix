@@ -1,6 +1,7 @@
 { config, ... }: {
   imports = [
     ../features/node/home.nix
+    ../features/opencode/home.nix
     ../features/zed/home.nix
   ];
 
