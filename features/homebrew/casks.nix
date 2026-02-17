@@ -1,29 +1,37 @@
 {
   homebrew.casks = [
+    # programming
     "ghostty"
-    "spotify"
-    "google-chrome"
     "visual-studio-code"
-    "cursor"
     "antigravity"
-    "firefox"
-    "wireshark"
     "claude-code"
-    "discord"
-    "obs"
-    "whatsapp"
-    "steam"
-    "zoom"
-    "postman"
-    "slack"
-    "ledger-wallet"
-    "macwhisper"
-    "ukelele"
+    "cursor"
     "intellij-idea"
     "jetbrains-toolbox"
+    "postman"
+    "wireshark"
+    # web
+    "google-chrome"
+    "helium-browser"
+    "firefox"
+    # social
+    "discord"
+    "whatsapp"
+    "slack"
+    "zoom"
+    # utilities
+    "ukelele"
     "disk-inventory-x" # deprecated, disable date: 2026-09-01, alternatives: GrandPerspective, Daisydisk
-    "obsidian"
+    "obs"
+    "macwhisper"
+    # games + music
+    "steam"
+    "nvidia-geforce-now"
+    "spotify"
     "minecraft"
     "modrinth"
+    # other
+    "ledger-wallet"
+    "obsidian"
   ];
 }

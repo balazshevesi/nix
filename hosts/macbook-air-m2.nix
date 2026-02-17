@@ -3,6 +3,7 @@
     ../features/homebrew/darwin.nix
     ../features/node/darwin.nix
     ../features/zed/darwin.nix
+    ../features/karabiner/darwin.nix
   ];
 
   environment.systemPackages = [

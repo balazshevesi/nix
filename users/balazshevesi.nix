@@ -1,5 +1,6 @@
 { config, ... }: {
   imports = [
+    ../features/karabiner/home.nix
     ../features/node/home.nix
     ../features/opencode/home.nix
     ../features/zed/home.nix
