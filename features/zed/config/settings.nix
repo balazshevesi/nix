@@ -146,4 +146,30 @@
     light = "Dracula Light (Alucard)";
     dark = "Colorizer Pro";
   };
+  auto_install_extensions = {
+    "html" = true;
+    "csv" = true;
+    "nix" = true;
+    "java" = true;
+    "vue" = true;
+    "xml" = true;
+    "astro" = true;
+    "toml" = true;
+    "dockerfile" = true;
+    "mermaid" = true;
+    "git-firefly" = true;
+    "0x96f" = true;
+    "bearded-icon-theme" = true;
+    "codebook" = true;
+    "colored-zed-icons-theme" = true;
+    "colorizer" = true;
+    "dracula" = true;
+    "emmet" = true;
+    "jetbrains-new-ui-icons" = true;
+    "macos-classic" = true;
+    "mcp-server-context7" = true;
+    "opencode" = true;
+    "react-typescript-snippets" = true;
+    "vscode-icons" = true;
+  };
 }
