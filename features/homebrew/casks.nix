@@ -24,13 +24,13 @@
     "disk-inventory-x" # deprecated, disable date: 2026-09-01, alternatives: GrandPerspective, Daisydisk
     "obs"
     "macwhisper"
-    # games + music
+    # games
     "steam"
     "nvidia-geforce-now"
-    "spotify"
     "minecraft"
     "modrinth"
     # other
+    "spotify"
     "ledger-wallet"
     "obsidian"
   ];
