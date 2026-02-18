@@ -3,19 +3,23 @@
     AppleEnabledInputSources = [
       {
         InputSourceKind = "Keyboard Layout";
-        InputSourceID = "com.apple.keylayout.ABC";
-      }
-      {
-        InputSourceKind = "Keyboard Layout";
         InputSourceID = "com.apple.keylayout.Swedish";
-      }
-      {
-        InputSourceKind = "Non Keyboard Input Method";
-        "Bundle ID" = "com.apple.PressAndHold";
       }
     ];
 
     AppleSelectedInputSources = [
+      {
+        InputSourceKind = "Keyboard Layout";
+        InputSourceID = "com.apple.keylayout.Swedish";
+      }
+    ];
+
+    AppleCurrentKeyboardLayoutInputSourceID = "com.apple.keylayout.Swedish";
+    AppleDefaultAsciiInputSource = {
+      InputSourceKind = "Keyboard Layout";
+      InputSourceID = "com.apple.keylayout.Swedish";
+    };
+    AppleInputSourceHistory = [
       {
         InputSourceKind = "Keyboard Layout";
         InputSourceID = "com.apple.keylayout.Swedish";
