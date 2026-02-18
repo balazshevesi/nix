@@ -1,5 +1,6 @@
 { self, pkgs, ... }: {
   imports = [
+    ../features/keyboard/darwin.nix
     ../features/homebrew/darwin.nix
     ../features/chrome/darwin.nix
     ../features/node/darwin.nix
