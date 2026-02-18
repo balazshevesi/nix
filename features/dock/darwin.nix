@@ -10,6 +10,7 @@
     # - 6 pink
     NSGlobalDomain = {
       AppleAccentColor = 6;
+      AppleInterfaceStyle = "Dark";
     };
   };
 
