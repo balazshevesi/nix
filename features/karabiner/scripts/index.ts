@@ -9,6 +9,8 @@ import {
   // @ts-ignore - deno will resolve it
 } from "karabiner.ts";
 
+const DEFAULT_PROFILE = "standard - colemak";
+
 // ! Change '--dry-run' to your Karabiner-Elements Profile name.
 // (--dry-run print the config json into console)
 // + Create a new profile if needed.
@@ -49,6 +51,13 @@ const superLayer = layer("⇪", "super")
 
     map("h").to("⌫"),
     map(";").to("⏎"),
+
+    map("comma").to$(
+      "osascript -e 'tell application \"System Events\" to tell appearance preferences to set dark mode to true'",
+    ),
+    map("period").to$(
+      "osascript -e 'tell application \"System Events\" to tell appearance preferences to set dark mode to false'",
+    ),
   ]);
 
 const fromQwertyToColemak = [
@@ -108,6 +117,8 @@ const fromQwertyToColemak = [
   ]),
 ];
 
+// const systemLayer = layer("")
+
 writeToProfile("standard - qwerty", [
   superLayer,
   rule("command tab navigation").manipulators([
@@ -119,7 +130,7 @@ writeToProfile("standard - qwerty", [
     .manipulators([map("q").toNone()]),
 ]);
 
-writeToProfile("standard - colemak", [
+writeToProfile(DEFAULT_PROFILE, [
   superLayer,
   rule("command tab navigation").manipulators([
     map("q", ["left_command"]).to("tab", ["left_control", "left_shift"]),
@@ -130,3 +141,26 @@ writeToProfile("standard - colemak", [
     .manipulators([map("q").toNone()]),
   ...fromQwertyToColemak,
 ]);
+
+const home = Deno.env.get("HOME");
+
+if (home) {
+  const configPath = `${home}/.config/karabiner/karabiner.json`;
+
+  try {
+    const raw = await Deno.readTextFile(configPath);
+    const data = JSON.parse(raw) as {
+      profiles?: Array<{ name?: string; selected?: boolean }>;
+    };
+
+    for (const profile of data.profiles ?? []) {
+      profile.selected = profile.name === DEFAULT_PROFILE;
+    }
+
+    await Deno.writeTextFile(configPath, `${JSON.stringify(data, null, 2)}\n`);
+  } catch (error) {
+    if (!(error instanceof Deno.errors.NotFound)) {
+      throw error;
+    }
+  }
+}
