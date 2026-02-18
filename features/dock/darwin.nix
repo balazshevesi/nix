@@ -1,4 +1,18 @@
 {
+  system.defaults.CustomUserPreferences = {
+    # - -1 graphite
+    # - 0 red
+    # - 1 orange
+    # - 2 yellow
+    # - 3 green
+    # - 4 blue
+    # - 5 purple
+    # - 6 pink
+    NSGlobalDomain = {
+      AppleAccentColor = 6;
+    };
+  };
+
   system.defaults.dock = {
     orientation = "right";
     tilesize = 49;
