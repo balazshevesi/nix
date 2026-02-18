@@ -16,7 +16,6 @@ import {
 
 writeToProfile("karabiner.ts", [
   // rule("").manipulators([map("right_command").to("⌫")]),
-
   layer("⇪", "super_layer_is_active")
     .modifiers("optionalAny")
     // .notification("hint")

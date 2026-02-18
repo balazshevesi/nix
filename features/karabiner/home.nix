@@ -7,6 +7,7 @@
       --allow-write \
       --allow-env \
       --allow-net \
+      --no-lock \
       --config ${./scripts/deno.json} \
       ${./scripts/index.ts}
   '';

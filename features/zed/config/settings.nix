@@ -142,9 +142,9 @@
   ui_font_size = 16;
   buffer_font_size = 15;
   theme = {
-    mode = "dark";
-    light = "Dracula Light (Alucard)";
-    dark = "Colorizer Pro";
+    mode = "system";
+    light = "VSCode Light+";
+    dark = "VSCode Dark Modern";
   };
   auto_install_extensions = {
     # languages

@@ -1,19 +1,29 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
-  extensionForcelist = ''
-    <key>ExtensionInstallForcelist</key>
-    <array>
-      <string>ddkjiahejlhfcafbddmgiahcphecmpfh;https://clients2.google.com/service/update2/crx</string>
-      <string>gppongmhjkpfnbhagpmjfkannfbllamg;https://clients2.google.com/service/update2/crx</string>
-    </array>
-  '';
+  extensionIds = [
+    "ddkjiahejlhfcafbddmgiahcphecmpfh"
+    "gppongmhjkpfnbhagpmjfkannfbllamg"
+    "hdokiejnpimakedhajhdlcegeplioahd"
+  ];
+
+  mkForcelist = updateUrl:
+    lib.concatStrings [
+      "<key>ExtensionInstallForcelist</key>\n"
+      "<array>\n"
+      (lib.concatMapStrings (id:
+        "  <string>${id};${updateUrl}</string>\n") extensionIds)
+      "</array>\n"
+    ];
+
+  chromeForcelist = mkForcelist "https://clients2.google.com/service/update2/crx";
+  heliumForcelist = mkForcelist "https://clients2.9oo91e.qjz9zk/service/update2/crx";
 
   chromeManagedPlist = pkgs.writeText "com.google.Chrome.plist" ''
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
       <dict>
-        ${extensionForcelist}
+        ${chromeForcelist}
       </dict>
     </plist>
   '';
@@ -23,12 +33,12 @@ let
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
       <dict>
-        ${extensionForcelist}
+        ${heliumForcelist}
       </dict>
     </plist>
   '';
 in {
-  system.activationScripts.chromeManagedPolicies.text = ''
+  system.activationScripts.preActivation.text = lib.mkAfter ''
     install -d -m 0755 "/Library/Managed Preferences"
     install -m 0644 ${chromeManagedPlist} "/Library/Managed Preferences/com.google.Chrome.plist"
     install -m 0644 ${heliumManagedPlist} "/Library/Managed Preferences/net.imput.helium.plist"
