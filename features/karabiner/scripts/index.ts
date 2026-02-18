@@ -14,51 +14,44 @@ import {
 // + Create a new profile if needed.
 // Supported alias: https://github.com/evan-liu/karabiner.ts/blob/main/src/utils/key-alias.ts
 
-writeToProfile("karabiner.ts", [
-  // rule("").manipulators([map("right_command").to("⌫")]),
-  layer("⇪", "super_layer_is_active")
-    .modifiers("optionalAny")
-    // .notification("hint")
-    .manipulators([
-      map("left_command").toNone(),
-      map("spacebar")
-        .toVar("spacebar_is_down")
-        .toAfterKeyUp(toUnsetVar("spacebar_is_down")),
-      withCondition(ifVar("spacebar_is_down"))([
-        // could be nice to have the space bar function as a 5x speed for i and k
-        //map("d").to("z", ["command"]),
-        // map("s").to("z", ["command", "shift"]),
-      ]),
-      //map("r").toPaste("testing"),
-
-      map("w").to("tab", ["left_control", "left_shift"]),
-      map("r").to("tab", ["control"]),
-      map("e").to("w", ["command"]),
-      map("t").to("t", ["command"]),
-
-      map("c").to("c", ["command"]),
-      map("v").to("b", ["command"]),
-
-      map("w").to("z", ["command"]),
-      map("e").to("z", ["command", "shift"]),
-
-      map("a").to("escape"),
-      map("s").to("left_shift"),
-      map("d").to("left_option"),
-      map("f").to("left_command"),
-
-      map("i").to("↑"),
-      map("j").to("←"),
-      map("k").to("↓"),
-      map("l").to("→"),
-
-      map("h").to("⌫"),
-      map(";").to("⏎"),
+const superLayer = layer("⇪", "super")
+  .modifiers("optionalAny")
+  .manipulators([
+    map("left_command").toNone(),
+    map("spacebar")
+      .toVar("spacebar_is_down")
+      .toAfterKeyUp(toUnsetVar("spacebar_is_down")),
+    withCondition(ifVar("spacebar_is_down"))([
+      // could be nice to have the space bar function as a 5x speed for i and k
+      //map("d").to("z", ["command"]),
+      // map("s").to("z", ["command", "shift"]),
     ]),
-  rule("command tab navigation").manipulators([
-    map("q", ["left_command"]).to("tab", ["left_control", "left_shift"]),
-    map("e", ["left_command"]).to("tab", ["control"]),
-  ]),
+    map("w").to("tab", ["left_control", "left_shift"]),
+    map("r").to("tab", ["control"]),
+    map("e").to("w", ["command"]),
+    map("t").to("t", ["command"]),
+
+    map("c").to("c", ["command"]),
+    map("v").to("b", ["command"]),
+
+    map("w").to("z", ["command"]),
+    map("e").to("z", ["command", "shift"]),
+
+    map("a").to("escape"),
+    map("s").to("left_shift"),
+    map("d").to("left_option"),
+    map("f").to("left_command"),
+
+    map("i").to("↑"),
+    map("j").to("←"),
+    map("k").to("↓"),
+    map("l").to("→"),
+
+    map("h").to("⌫"),
+    map(";").to("⏎"),
+  ]);
+
+const fromQwertyToColemak = [
   rule("qwerty to colemak dhk").manipulators([
     map("q").to("q"),
     map("w").to("w"),
@@ -113,7 +106,27 @@ writeToProfile("karabiner.ts", [
     map("t", "shift", "any").to("b", ["shift"]),
     map("k", "shift", "any").to("e", ["shift"]),
   ]),
+];
+
+writeToProfile("standard - qwerty", [
+  superLayer,
+  rule("command tab navigation").manipulators([
+    map("q", ["left_command"]).to("tab", ["left_control", "left_shift"]),
+    map("e", ["left_command"]).to("tab", ["control"]),
+  ]),
   layer("q", "disable cmd + q")
     .modifiers("left_command")
     .manipulators([map("q").toNone()]),
+]);
+
+writeToProfile("standard - colemak", [
+  superLayer,
+  rule("command tab navigation").manipulators([
+    map("q", ["left_command"]).to("tab", ["left_control", "left_shift"]),
+    map("e", ["left_command"]).to("tab", ["control"]),
+  ]),
+  layer("q", "disable cmd + q")
+    .modifiers("left_command")
+    .manipulators([map("q").toNone()]),
+  ...fromQwertyToColemak,
 ]);
