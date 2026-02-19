@@ -14,6 +14,7 @@
     pkgs.git
     pkgs.curl
     pkgs.vim
+    pkgs.nixd
   ];
 
   nix.settings.experimental-features = "nix-command flakes";
