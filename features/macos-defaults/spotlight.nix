@@ -74,7 +74,7 @@
         name = "SPREADSHEETS";
       }
       {
-        enabled = 1;
+        enabled = 0;
         name = "SYSTEM_PREFS";
       }
       {

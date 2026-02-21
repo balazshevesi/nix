@@ -9,6 +9,5 @@
     ./control-center.nix
     ./window-manager.nix
     ./screenshots.nix
-    ./accessibility.nix
   ];
 }
