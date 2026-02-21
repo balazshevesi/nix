@@ -7,6 +7,8 @@
     };
     enable_lsp_tasks = true;
   };
+  cursor_blink = false;
+  vertical_scroll_margin = 0.0;
   auto_update = true;
   context_servers."mcp-server-context7" = {
     enabled = true;

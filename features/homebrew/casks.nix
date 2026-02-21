@@ -24,6 +24,8 @@
     "disk-inventory-x" # deprecated, disable date: 2026-09-01, alternatives: GrandPerspective, Daisydisk
     "obs"
     "macwhisper"
+    "keyboardcleantool"
+    "betterdisplay"
     # games
     "steam"
     "nvidia-geforce-now"
