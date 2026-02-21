@@ -1,6 +1,5 @@
 { self, pkgs, ... }: {
   imports = [
-    ../features/keyboard/darwin.nix
     ../features/macos-defaults/darwin.nix
     ../features/wallpaper/darwin.nix
     ../features/homebrew/darwin.nix
