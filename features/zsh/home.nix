@@ -2,6 +2,9 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    shellAliases = {
+      cat = "bat";
+    };
 
     oh-my-zsh = {
       enable = true;
