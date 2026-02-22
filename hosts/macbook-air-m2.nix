@@ -3,6 +3,7 @@
     ../features/macos-defaults/darwin.nix
     ../features/wallpaper/darwin.nix
     ../features/homebrew/darwin.nix
+    ../features/aerospace/darwin.nix
     ../features/chrome/darwin.nix
     ../features/node/darwin.nix
     ../features/zed/darwin.nix

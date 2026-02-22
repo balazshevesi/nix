@@ -10,7 +10,6 @@
       "/Applications/Spotify.app"
       "/Applications/Google Chrome.app"
       "/Applications/Ghostty.app"
-      "/System/Applications/Utilities/Activity Monitor.app"
     ];
   };
 
