@@ -25,7 +25,7 @@
         export BUN_INSTALL="$HOME/.bun"
         export PATH="$BUN_INSTALL/bin:$PATH"
 
-        if command -v brew >/dev/null 2>&1; t hen
+        if command -v brew >/dev/null 2>&1; then
           export JAVA_HOME="$(brew --prefix openjdk@21)/libexec/openjdk.jdk/Contents/Home"
           export PATH="$JAVA_HOME/bin:$PATH"
         fi
@@ -37,5 +37,12 @@
         eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.omp.json)"
       '')
     ];
+  };
+
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "Visual Studio Dark+";
+    };
   };
 }
