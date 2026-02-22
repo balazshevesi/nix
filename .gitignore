@@ -1,2 +1,4 @@
 /result
 deno.lock
+node_modules/
+bun.lock

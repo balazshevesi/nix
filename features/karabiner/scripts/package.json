@@ -1,0 +1,12 @@
+{
+  "name": "karabiner-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun run index.ts"
+  },
+  "dependencies": {
+    "karabiner.ts": "1.36.0",
+    "nanoid": "5.1.6"
+  }
+}

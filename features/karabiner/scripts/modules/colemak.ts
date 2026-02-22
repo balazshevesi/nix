@@ -1,8 +1,4 @@
-import {
-  map,
-  rule,
-  // @ts-ignore - deno will resolve it
-} from "karabiner.ts";
+import { map, rule } from "karabiner.ts";
 
 export const fromQwertyToColemak = [
   rule("qwerty to colemak dhk").manipulators([

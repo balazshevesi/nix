@@ -1,16 +1,10 @@
-import {
-  layer,
-  map,
-  // @ts-ignore - deno will resolve it
-} from "karabiner.ts";
+import { layer, map } from "karabiner.ts";
 import { aerospaceMainBindings } from "./aerospace.ts";
-import { withKey } from "./utils.ts";
 
 export const superLayer = layer("⇪", "super")
   .modifiers("optionalAny")
   .manipulators([
     ...aerospaceMainBindings,
-    // ...withKey("left_command", aerospaceMainBindings),
 
     map("w").to("tab", ["left_control", "left_shift"]),
     map("r").to("tab", ["control"]),
@@ -35,11 +29,4 @@ export const superLayer = layer("⇪", "super")
 
     map("h").to("⌫"),
     map(";").to("⏎"),
-
-    map("comma").to$(
-      "osascript -e 'tell application \"System Events\" to tell appearance preferences to set dark mode to true'",
-    ),
-    map("period").to$(
-      "osascript -e 'tell application \"System Events\" to tell appearance preferences to set dark mode to false'",
-    ),
   ]);
