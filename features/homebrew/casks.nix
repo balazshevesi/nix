@@ -26,6 +26,7 @@
     "macwhisper"
     "keyboardcleantool"
     "betterdisplay"
+    "numi"
     # games
     "steam"
     "nvidia-geforce-now"

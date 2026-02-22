@@ -46,6 +46,15 @@
     };
   };
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  home.sessionVariables = {
+    FZF_COMPLETION_TRIGGER = ",,";
+  };
+
   programs.pay-respects = {
     enable = true;
     enableZshIntegration = true;
