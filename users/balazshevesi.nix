@@ -1,5 +1,6 @@
 { config, ... }: {
   imports = [
+    ../features/ghostty/home.nix
     ../features/karabiner/home.nix
     ../features/node/home.nix
     ../features/ohmyposh/home.nix
