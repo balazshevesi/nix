@@ -1,6 +1,4 @@
-import { DEFAULT_PROFILE } from "./constants.ts";
-
-export const selectDefaultProfile = async () => {
+export const selectProfile = async (targetProfile: string) => {
   const home = Deno.env.get("HOME");
 
   if (!home) {
@@ -16,7 +14,7 @@ export const selectDefaultProfile = async () => {
     };
 
     for (const profile of data.profiles ?? []) {
-      profile.selected = profile.name === DEFAULT_PROFILE;
+      profile.selected = profile.name === targetProfile;
     }
 
     await Deno.writeTextFile(configPath, `${JSON.stringify(data, null, 2)}\n`);

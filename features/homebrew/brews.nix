@@ -1,5 +1,6 @@
 {
   homebrew.brews = [
+    "borders"
     "docker"
     "python@3.14"
     "uv"

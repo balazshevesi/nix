@@ -1,4 +1,7 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+let
+  karabinerScripts = ./scripts;
+in {
   home.activation.configureKarabiner = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p "$HOME/.config/karabiner"
 
@@ -8,7 +11,7 @@
       --allow-env \
       --allow-net \
       --no-lock \
-      --config ${./scripts/deno.json} \
-      ${./scripts/index.ts}
+      --config ${karabinerScripts}/deno.json \
+      ${karabinerScripts}/index.ts
   '';
 }

@@ -1,24 +1,17 @@
 import {
-  ifVar,
   layer,
   map,
-  toUnsetVar,
-  withCondition,
   // @ts-ignore - deno will resolve it
 } from "karabiner.ts";
+import { aerospaceMainBindings } from "./aerospace.ts";
+import { withKey } from "./utils.ts";
 
 export const superLayer = layer("⇪", "super")
   .modifiers("optionalAny")
   .manipulators([
-    map("left_command").toNone(),
-    map("spacebar")
-      .toVar("spacebar_is_down")
-      .toAfterKeyUp(toUnsetVar("spacebar_is_down")),
-    withCondition(ifVar("spacebar_is_down"))([
-      // could be nice to have the space bar function as a 5x speed for i and k
-      //map("d").to("z", ["command"]),
-      // map("s").to("z", ["command", "shift"]),
-    ]),
+    ...aerospaceMainBindings,
+    // ...withKey("left_command", aerospaceMainBindings),
+
     map("w").to("tab", ["left_control", "left_shift"]),
     map("r").to("tab", ["control"]),
     map("e").to("w", ["command"]),
