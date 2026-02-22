@@ -4,6 +4,7 @@
     ../features/node/home.nix
     ../features/opencode/home.nix
     ../features/zed/home.nix
+    ../features/zsh/home.nix
   ];
 
   home.username = "balazshevesi";
