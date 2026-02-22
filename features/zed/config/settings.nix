@@ -1,4 +1,5 @@
 {
+  ui_font_family = ".SystemUIFont";
   show_edit_predictions = false;
   lsp.vtsls = {
     settings = {
@@ -39,6 +40,7 @@
       max_severity = null;
     };
   };
+  buffer_font_family = "MesloLGS Nerd Font Mono";
   colorize_brackets = true;
   agent = {
     dock = "left";
@@ -67,7 +69,7 @@
     };
     model_parameters = [];
   };
-  buffer_font_family = "Mishafi";
+
   autosave.after_delay.milliseconds = 20000;
   tabs.file_icons = true;
   languages = {
