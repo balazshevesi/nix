@@ -1,58 +1,61 @@
-import { map, rule } from "karabiner.ts";
+import { FromKeyParam, map, rule, ToKeyParam } from "karabiner.ts";
 
-export const fromQwertyToColemak = [
-  rule("qwerty to colemak dhk").manipulators([
-    map("q").to("q"),
-    map("w").to("w"),
-    map("c").to("c"),
-    map("v").to("d"),
-    map("e").to("f"),
-    map("m").to("h"),
-    map("l").to("i"),
-    map("y").to("j"),
-    map("h").to("k"),
-    map("u").to("l"),
-    map("n").to("m"),
-    map("j").to("n"),
-    map(";").to("o"),
-    map("r").to("p"),
-    map("s").to("r"),
-    map("d").to("s"),
-    map("f").to("t"),
-    map("i").to("u"),
-    map("x").to("x"),
-    map("o").to("y"),
-    map("z").to("z"),
-    map("p").to(";"),
-    map("b").to("v"),
-    map("t").to("b"),
-    map("k").to("e"),
-  ]),
-  rule("qwerty to colemak dhk with shift").manipulators([
-    map("q", "shift").to("q", ["shift"]),
-    map("w", "shift").to("w", ["shift"]),
-    map("c", "shift").to("c", ["shift"]),
-    map("v", "shift").to("d", ["shift"]),
-    map("e", "shift").to("f", ["shift"]),
-    map("m", "shift").to("h", ["shift"]),
-    map("l", "shift").to("i", ["shift"]),
-    map("y", "shift").to("j", ["shift"]),
-    map("h", "shift").to("k", ["shift"]),
-    map("u", "shift").to("l", ["shift"]),
-    map("n", "shift").to("m", ["shift"]),
-    map("j", "shift").to("n", ["shift"]),
-    map(";", "shift").to("o", ["shift"]),
-    map("r", "shift").to("p", ["shift"]),
-    map("s", "shift").to("r", ["shift"]),
-    map("d", "shift").to("s", ["shift"]),
-    map("f", "shift").to("t", ["shift"]),
-    map("i", "shift").to("u", ["shift"]),
-    map("x", "shift").to("x", ["shift"]),
-    map("o", "shift").to("y", ["shift"]),
-    map("z", "shift").to("z", ["shift"]),
-    map("p", "shift").to(";", ["shift"]),
-    map("b", "shift").to("v", ["shift"]),
-    map("t", "shift").to("b", ["shift"]),
-    map("k", "shift").to("e", ["shift"]),
-  ]),
+// Colemak-DHk, assuming Swedish ISO layout.
+
+/*
+Final layout:
++---+---+---+---+---+---+---+---+---+---+---+
+| Q | W | F | P | B | J | L | U | Y | Ö | Å |
++---+---+---+---+---+---+---+---+---+---+---+
+  +---+---+---+---+---+---+---+---+---+---+---+
+  | A | R | S |_T_| G | K |_N_| E | I | O | Ä |
+  +---+---+---+---+---+---+---+---+---+---+---+
+    +---+---+---+---+---+---+---+
+    | Z | X | C | D | V | M | H |
+    +---+---+---+---+---+---+---+
+*/
+
+export const colemak = new Map<FromKeyParam, ToKeyParam>([
+  // top row
+  ["q", "q"],
+  ["w", "w"],
+  ["e", "f"],
+  ["r", "p"],
+  ["t", "b"],
+  ["y", "j"],
+  ["u", "l"],
+  ["i", "u"],
+  ["o", "y"],
+  ["p", ";"],
+  ["open_bracket", "open_bracket"],
+
+  // home row
+  ["s", "r"],
+  ["d", "s"],
+  ["f", "t"],
+  ["h", "k"],
+  ["j", "n"],
+  ["k", "e"],
+  ["l", "i"],
+  [";", "o"],
+
+  // bottom row
+  ["z", "z"],
+  ["x", "x"],
+  ["c", "c"],
+  ["v", "d"],
+  ["b", "v"],
+  ["n", "m"],
+  ["m", "h"],
+]);
+
+const colemakMappings = Array.from(colemak, ([fromKey, toKey]) =>
+  map(fromKey).to(toKey),
+);
+const colemakMappingsWithShift = Array.from(colemak, ([fromKey, toKey]) =>
+  map(fromKey, "shift").to(toKey, ["shift"]),
+);
+export const qwertyToColemak = [
+  rule("qwerty to colemak").manipulators(colemakMappings),
+  rule("qwerty to colemak with shift").manipulators(colemakMappingsWithShift),
 ];

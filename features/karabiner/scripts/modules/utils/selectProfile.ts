@@ -1,16 +1,12 @@
 export const selectProfile = async (targetProfile: string) => {
   const home = process.env.HOME;
 
-  if (!home) {
-    return;
-  }
+  if (!home) return;
 
   const configPath = `${home}/.config/karabiner/karabiner.json`;
   const configFile = Bun.file(configPath);
 
-  if (!(await configFile.exists())) {
-    return;
-  }
+  if (!(await configFile.exists())) return;
 
   const raw = await configFile.text();
   const data = JSON.parse(raw) as {
