@@ -45,4 +45,14 @@
       theme = "Visual Studio Dark+";
     };
   };
+
+  programs.pay-respects = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [
+      "--alias"
+      "f"
+      "--nocnf"
+    ];
+  };
 }
