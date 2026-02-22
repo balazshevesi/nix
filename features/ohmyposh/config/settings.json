@@ -1,4 +1,3 @@
-builtins.fromJSON ''
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "shell_integration": true,
@@ -67,12 +66,6 @@ builtins.fromJSON ''
       "type": "rprompt"
     }
   ],
-  "transient_prompt": {
-    "background": "black",
-    "foreground": "white",
-    "template": " ❯ "
-  },
   "final_space": true,
   "version": 4
 }
-''
