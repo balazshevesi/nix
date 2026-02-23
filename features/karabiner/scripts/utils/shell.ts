@@ -55,5 +55,6 @@ export const shell = {
     closeFocused: `osascript -e \'tell application "System Events" to set frontProc to first application process whose frontmost is true\' -e \'tell application "System Events" to set frontApp to name of frontProc\' -e \'if frontApp is not "Finder" then tell application "System Events" to set visible of frontProc to false\' -e \'if frontApp is not "Finder" then do shell script "killall -9 " & quoted form of frontApp & " >/dev/null 2>&1 &"\'`,
     launch: (appName: string) => launchApp,
   },
-  aerospace: (...c: AerospaceCommand[]) => `${AEROSPACE_BIN} ${c.join("; ")}`,
+  aerospace: (...commands: AerospaceCommand[]) =>
+    commands.map((cmd) => `${AEROSPACE_BIN} ${cmd}`).join(" && "),
 };

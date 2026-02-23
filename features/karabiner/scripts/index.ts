@@ -2,6 +2,7 @@ import { map, rule, writeToProfile } from "karabiner.ts";
 import { hyperLayer } from "./layers/hyper-layer";
 import { systemLayer } from "./layers/system-layer";
 import { qwertyToColemak } from "./utils/colemak";
+import { ensureProfiles } from "./utils/ensureProfiles";
 import { selectProfile } from "./utils/selectProfile";
 
 // ! Change '--dry-run' to your Karabiner-Elements Profile name.
@@ -9,9 +10,12 @@ import { selectProfile } from "./utils/selectProfile";
 // + Create a new profile if needed.
 // Supported alias: https://github.com/evan-liu/karabiner.ts/blob/main/src/utils/key-alias.ts
 
+const QWERTY_PROFILE = "standard - qwerty";
 export const DEFAULT_PROFILE = "standard - colemak";
 
-writeToProfile("standard - qwerty", [
+await ensureProfiles([QWERTY_PROFILE, DEFAULT_PROFILE]);
+
+writeToProfile(QWERTY_PROFILE, [
   rule("disable cmd + q").manipulators([map("q", ["command"]).toNone()]),
   hyperLayer,
   systemLayer,

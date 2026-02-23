@@ -5,7 +5,7 @@ import { shell } from "../utils/shell.ts";
 const a = shell.aerospace;
 
 const aerospaceBindings = [
-  ...withKey("spacebar", [
+  ...withKey("left_command", [
     // focus windows - i/j/k/l
     map("j").to$(a("focus left")),
     map("k").to$(a("focus down")),
@@ -55,12 +55,10 @@ const aerospaceBindings = [
   map("tab").to$(a("workspace-back-and-forth")),
 ];
 
+//
 export const hyperLayer = layer("⇪", "hyper")
   .modifiers("optionalAny")
   .manipulators([
-    // aerospace bindings
-    ...aerospaceBindings,
-
     // tab navigation
     map("w").to("tab", ["left_control", "left_shift"]),
     map("r").to("tab", ["control"]),
@@ -74,6 +72,9 @@ export const hyperLayer = layer("⇪", "hyper")
     // undo-redo
     map("w").to("z", ["command"]),
     map("e").to("z", ["command", "shift"]),
+
+    // aerospace bindings
+    ...aerospaceBindings,
 
     // mods
     map("a").to("escape"),
