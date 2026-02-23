@@ -1,6 +1,6 @@
 import { map, rule, writeToProfile } from "karabiner.ts";
-import { hyperLayer } from "./layers/hyper-layer";
-import { systemLayer } from "./layers/system-layer";
+import { hyperLayer } from "./layers/hyperLayer";
+import { systemLayer } from "./layers/systemLayer";
 import { qwertyToColemak } from "./utils/colemak";
 import { ensureProfiles } from "./utils/ensureProfiles";
 import { selectProfile } from "./utils/selectProfile";
