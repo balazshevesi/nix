@@ -1,6 +1,8 @@
 const AEROSPACE_BIN = "/opt/homebrew/bin/aerospace";
 
-const launchApp = (appName: string) => `open -a ${appName}`;
+type Apps = "Chrome" | "Finder";
+
+const launchApp = (appName: Apps) => `open -a ${appName}`;
 
 type AerospaceSubcommand =
   | "balance-sizes"
@@ -42,9 +44,6 @@ type AerospaceSubcommand =
 
 type AerospaceCommand = `${AerospaceSubcommand}${"" | ` ${string}`}`;
 
-const aerospaceAction = (action: AerospaceSubcommand, args?: string) =>
-  `${AEROSPACE_BIN} ${action}${args ? ` ${args}` : ""}`;
-
 export const shell = {
   systemSettings: {
     appearance: {
@@ -54,11 +53,7 @@ export const shell = {
   },
   apps: {
     closeFocused: `osascript -e \'tell application "System Events" to set frontProc to first application process whose frontmost is true\' -e \'tell application "System Events" to set frontApp to name of frontProc\' -e \'if frontApp is not "Finder" then tell application "System Events" to set visible of frontProc to false\' -e \'if frontApp is not "Finder" then do shell script "killall -9 " & quoted form of frontApp & " >/dev/null 2>&1 &"\'`,
-    // launch: (appName: string) => `open -a ${appName}`,
+    launch: (appName: string) => launchApp,
   },
-  aero: {
-    act: (command: AerospaceCommand) => `${AEROSPACE_BIN} ${command}`,
-    moveToWorkspace: (ws: string) =>
-      `${aerospaceAction("move-node-to-workspace", ws)}; ${aerospaceAction("workspace", ws)}`,
-  },
+  aerospace: (...c: AerospaceCommand[]) => `${AEROSPACE_BIN} ${c.join("; ")}`,
 };
