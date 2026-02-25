@@ -11,5 +11,6 @@
     "openjdk@21"
     "maven"
     "neofetch" # no longer maintained, consider switching
+    "zig"
   ];
 }
