@@ -1,12 +1,18 @@
 {
   ui_font_family = ".SystemUIFont";
   show_edit_predictions = false;
+  lsp.jdtls.settings.java_home =
+    "/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home";
   lsp.vtsls = {
     settings = {
       typescript.updateImportsOnFileMove.enabled = "always";
       javascript.updateImportsOnFileMove.enabled = "always";
     };
     enable_lsp_tasks = true;
+  };
+  drag_and_drop_selection = {
+    enabled = true;
+    delay= 300;
   };
   cursor_blink = false;
   vertical_scroll_margin = 0.0;
@@ -73,6 +79,7 @@
   autosave.after_delay.milliseconds = 20000;
   tabs.file_icons = true;
   languages = {
+    Java.language_servers = [ "jdtls" "!java" "..." ];
     TypeScript = {
       format_on_save = "on";
       formatter.external = {
@@ -156,6 +163,7 @@
     "csv" = true;
     "nix" = true;
     "java" = true;
+    "java-eclipse-jdtls" = false;
     "vue" = true;
     "xml" = true;
     "astro" = true;

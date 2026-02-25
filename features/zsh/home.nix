@@ -28,8 +28,15 @@
         export BUN_INSTALL="$HOME/.bun"
         export PATH="$BUN_INSTALL/bin:$PATH"
 
-        if command -v brew >/dev/null 2>&1; then
-          export JAVA_HOME="$(brew --prefix openjdk@21)/libexec/openjdk.jdk/Contents/Home"
+        if command -v brew >/dev/null 2>&1 && OPENJDK21_PREFIX="$(brew --prefix openjdk@21 2>/dev/null)"; then
+          export JAVA_HOME="$OPENJDK21_PREFIX/libexec/openjdk.jdk/Contents/Home"
+        elif JAVA_HOME_FROM_MAC=$(/usr/libexec/java_home 2>/dev/null); then
+          export JAVA_HOME="$JAVA_HOME_FROM_MAC"
+        elif command -v brew >/dev/null 2>&1 && OPENJDK_PREFIX="$(brew --prefix openjdk 2>/dev/null)"; then
+          export JAVA_HOME="$OPENJDK_PREFIX/libexec/openjdk.jdk/Contents/Home"
+        fi
+
+        if [ -n "$JAVA_HOME" ]; then
           export PATH="$JAVA_HOME/bin:$PATH"
         fi
 

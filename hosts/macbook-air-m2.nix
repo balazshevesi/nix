@@ -16,7 +16,9 @@
     pkgs.vim
     pkgs.nixd
   ];
+  programs.zsh.enable = true;
 
+  nix.enable = false;
   nix.settings.experimental-features = "nix-command flakes";
 
   users.users.balazshevesi = {
