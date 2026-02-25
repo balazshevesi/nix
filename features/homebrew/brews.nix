@@ -12,5 +12,6 @@
     "maven"
     "neofetch" # no longer maintained, consider switching
     "zig"
+    "cargo-c"
   ];
 }

@@ -64,6 +64,8 @@
     };
   };
 
+  xdg.configFile."ghostty/config".force = true;
+
   home.file."Library/Application Support/com.mitchellh.ghostty/config" = {
     source = config.xdg.configFile."ghostty/config".source;
     force = true;
