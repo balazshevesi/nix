@@ -13,16 +13,29 @@ import { selectProfile } from "./utils/selectProfile";
 const QWERTY_PROFILE = "standard - qwerty";
 export const DEFAULT_PROFILE = "standard - colemak";
 
+const sectionLessThanSwap = [
+  rule("swap section and less-than keys").manipulators([
+    map("grave_accent_and_tilde").to("non_us_backslash"),
+    map("non_us_backslash").to("grave_accent_and_tilde"),
+  ]),
+  rule("swap section and less-than keys with shift").manipulators([
+    map("grave_accent_and_tilde", "shift").to("non_us_backslash", ["shift"]),
+    map("non_us_backslash", "shift").to("grave_accent_and_tilde", ["shift"]),
+  ]),
+];
+
 await ensureProfiles([QWERTY_PROFILE, DEFAULT_PROFILE]);
 
 writeToProfile(QWERTY_PROFILE, [
   rule("disable cmd + q").manipulators([map("q", ["command"]).toNone()]),
+  ...sectionLessThanSwap,
   hyperLayer,
   systemLayer,
 ]);
 
 writeToProfile(DEFAULT_PROFILE, [
   rule("disable cmd + q").manipulators([map("q", ["command"]).toNone()]),
+  ...sectionLessThanSwap,
   hyperLayer,
   systemLayer,
   ...qwertyToColemak,
