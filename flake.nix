@@ -7,10 +7,10 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    paneru = {
-      url = "github:karinushka/paneru";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # paneru = {
+    #   url = "github:karinushka/paneru";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs = inputs@{ self, nix-darwin, home-manager, ... }: {
@@ -24,9 +24,9 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.sharedModules = [
-            inputs.paneru.homeModules.paneru
-          ];
+          # home-manager.sharedModules = [
+          #   inputs.paneru.homeModules.paneru
+          # ];
           home-manager.users.balazshevesi = import ./users/balazshevesi.nix;
         }
       ];

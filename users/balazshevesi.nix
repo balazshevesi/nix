@@ -1,7 +1,7 @@
 { config, ... }: {
   imports = [
     ../features/aerospace/home.nix
-    ../features/paneru/home.nix
+    # ../features/paneru/home.nix
     ../features/ghostty/home.nix
     ../features/karabiner/home.nix
     ../features/node/home.nix
