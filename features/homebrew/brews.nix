@@ -14,5 +14,6 @@
     "zig"
     "rust"
     "cargo-c"
+    "cocoapods"
   ];
 }
