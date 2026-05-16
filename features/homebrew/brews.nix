@@ -15,5 +15,6 @@
     "rust"
     "cargo-c"
     "cocoapods"
+    "gh"
   ];
 }

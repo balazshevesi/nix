@@ -27,6 +27,7 @@
     "keyboardcleantool"
     "betterdisplay"
     "numi"
+    "multipass"
     # games
     "steam"
     "nvidia-geforce-now"

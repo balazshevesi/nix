@@ -113,9 +113,6 @@ export const hyperLayer = layer("⇪", "hyper")
     // aerospace bindings
     ...aerospaceBindings,
 
-    // paneru bindings (disabled)
-    // ...paneruBindings,
-
     // tab navigation
     map("w").to("tab", ["left_control", "left_shift"]),
     map("r").to("tab", ["control"]),
@@ -127,14 +124,26 @@ export const hyperLayer = layer("⇪", "hyper")
     map("v").to("b", ["command"]),
 
     // undo-redo
-    map("w").to("z", ["command"]),
-    map("e").to("z", ["command", "shift"]),
+    // map("w").to("z", ["command"]),
+    // map("e").to("z", ["command", "shift"]),
 
     // mods
     map("a").to("escape"),
     map("s").to("left_shift"),
     map("d").to("left_option"),
     map("f").to("left_command"),
+
+    // round brackets
+    map("u", ["shift"]).to("8", ["shift"]),
+    map("o", ["shift"]).to("9", ["shift"]),
+
+    // square brackets
+    map("u", ["option"]).to("8", ["option"]),
+    map("o", ["option"]).to("9", ["option"]),
+
+    // curly brackets
+    map("u", ["command"]).to("8", ["option", "shift"]),
+    map("o", ["command"]).to("9", ["option", "shift"]),
 
     // arrows
     map("i").to("↑"),
