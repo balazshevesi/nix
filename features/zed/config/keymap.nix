@@ -4,6 +4,8 @@
     bindings = {
       "alt-cmd-b" = "workspace::ToggleLeftDock";
       "cmd-b" = "workspace::ToggleRightDock";
+      "cmd-j" = "terminal_panel::ToggleFocus";
+      "ctrl-`" = "terminal_panel::ToggleFocus";
     };
   }
   {

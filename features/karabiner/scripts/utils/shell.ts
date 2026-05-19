@@ -7,6 +7,8 @@ const SPACE_KEYCODES = {
 } as const;
 
 const AEROSPACE_BIN = "/opt/homebrew/bin/aerospace";
+const ETHER_WM_BIN = "/Users/balazshevesi/.bun/bin/bun";
+const ETHER_WM_ENTRYPOINT = "/Users/balazshevesi/github_repos/ether-wm/index.ts";
 
 type SpaceNumber = keyof typeof SPACE_KEYCODES;
 
@@ -55,6 +57,20 @@ type AerospaceSubcommand =
 
 type AerospaceCommand = `${AerospaceSubcommand}${"" | ` ${string}`}`;
 
+type EtherWmSubcommand =
+  | "focus"
+  | "move"
+  | "move-to-workspace"
+  | "ping"
+  | "resize"
+  | "toggle-fullscreen"
+  | "toggle-nearest-direction"
+  | "toggle-nearest-type"
+  | "toggle-workspace-direction"
+  | "workspace";
+
+type EtherWmCommand = `${EtherWmSubcommand}${"" | ` ${string}`}`;
+
 type PaneruDirection = "north" | "south" | "west" | "east" | "first" | "last";
 
 type PaneruWindowAction =
@@ -90,6 +106,11 @@ export const shell = {
 
   aerospace: (...commands: AerospaceCommand[]) =>
     commands.map((cmd) => `${AEROSPACE_BIN} ${cmd}`).join(" && "),
+
+  ether: (...commands: EtherWmCommand[]) =>
+    commands
+      .map((cmd) => `${ETHER_WM_BIN} ${ETHER_WM_ENTRYPOINT} ${cmd}`)
+      .join(" && "),
 
   systemSettings: {
     workspace: {
