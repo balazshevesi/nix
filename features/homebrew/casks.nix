@@ -26,6 +26,7 @@
     "macwhisper"
     "keyboardcleantool"
     "betterdisplay"
+    "hammerspoon"
     "numi"
     "multipass"
     # games

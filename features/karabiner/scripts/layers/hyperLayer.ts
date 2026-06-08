@@ -16,6 +16,15 @@ const HOMEROW: FromKeyParam[] = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
 const NUMBER_LAYER = "hyper_number_layer";
 const a = shell.aerospace;
 const ether = shell.ether;
+const TRACKPAD_SPEED_NORMAL = 0.6875;
+const TRACKPAD_SPEED_BOOSTED = 2.5;
+const SCROLL_STATE_FILE = "/tmp/karabiner-hyper-scroll";
+const hyperPointerSpeed = (speed: number) =>
+  `BIN="$HOME/.nix-profile/bin/hyper-pointer-speed"; if [ ! -x "$BIN" ]; then BIN="/etc/profiles/per-user/$USER/bin/hyper-pointer-speed"; fi; if [ ! -x "$BIN" ]; then BIN="$HOME/.local/bin/hyper-pointer-speed"; fi; "$BIN" ${speed}`;
+const boostPointerSpeed = hyperPointerSpeed(TRACKPAD_SPEED_BOOSTED);
+const restorePointerSpeed = hyperPointerSpeed(TRACKPAD_SPEED_NORMAL);
+const enableScrollMode = `/usr/bin/touch ${SCROLL_STATE_FILE}`;
+const disableScrollMode = `/bin/rm -f ${SCROLL_STATE_FILE}`;
 
 const aerospaceBindings = [
   ...withKey("spacebar", [
@@ -135,7 +144,13 @@ const symbols: Record<string, ToEvent> = {
 export const hyperLayer = layer("⇪", "hyper")
   .modifiers("optionalAny")
   .configKey(
-    (key) => key.toIfAlone("escape").toAfterKeyUp(toUnsetVar(NUMBER_LAYER)),
+    (key) =>
+      key.to$(boostPointerSpeed).toAfterKeyUp([
+        toUnsetVar(NUMBER_LAYER),
+        {
+          shell_command: `${restorePointerSpeed}; ${disableScrollMode}`,
+        },
+      ]),
     true,
   )
   .manipulators([
@@ -165,6 +180,7 @@ export const hyperLayer = layer("⇪", "hyper")
     // map("w").to("z", ["command"]),
     // map("e").to("z", ["command", "shift"]),
 
+    
     // Brackets: specific modifier combos must come before the plain mapping.
     map("u", ["command"]).to(symbols["<"]),
     map("o", ["command"]).to(symbols[">"]),
@@ -178,7 +194,10 @@ export const hyperLayer = layer("⇪", "hyper")
     map("y").to(symbols["/"]),
 
     // mods
-    map("s").to("left_shift"),
+    map("s").to$(enableScrollMode).to("left_shift").toAfterKeyUp({
+      shell_command: disableScrollMode,
+    }),
+
     map("d").to("left_option"),
     map("f").to("left_command"),
 
