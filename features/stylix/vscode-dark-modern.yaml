@@ -1,0 +1,21 @@
+system: "base16"
+name: "VS Code Dark Modern"
+author: "Balazs Hevesi"
+variant: "dark"
+palette:
+  base00: "#1F1F1F" # editor/background
+  base01: "#181818" # panels
+  base02: "#2A2D2E" # selections/elements
+  base03: "#6E7681" # comments/line numbers
+  base04: "#9D9D9D" # muted text
+  base05: "#CCCCCC" # foreground
+  base06: "#E8E8E8" # bright foreground
+  base07: "#FFFFFF" # brightest foreground
+  base08: "#F85149" # red/errors
+  base09: "#CE9178" # orange/strings
+  base0A: "#CCA700" # yellow/warnings
+  base0B: "#2EA043" # green/success
+  base0C: "#11A8CD" # cyan/info
+  base0D: "#0078D4" # blue/primary
+  base0E: "#DA70D6" # purple/secondary
+  base0F: "#C74E39" # brown/removed

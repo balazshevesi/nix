@@ -1,7 +1,16 @@
 {
   homebrew.taps = [
-    "FelixKratz/formulae"
-    "nikitabobko/tap"
-    "oven-sh/bun"
+    {
+      name = "FelixKratz/formulae";
+      trusted = true;
+    }
+    {
+      name = "nikitabobko/tap";
+      trusted = true;
+    }
+    {
+      name = "oven-sh/bun";
+      trusted = true;
+    }
   ];
 }

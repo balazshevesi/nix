@@ -7,18 +7,23 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # paneru = {
     #   url = "github:karinushka/paneru";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, ... }: {
+  outputs = inputs@{ self, nix-darwin, home-manager, stylix, ... }: {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#macbook-air-m2
     darwinConfigurations."macbook-air-m2" = nix-darwin.lib.darwinSystem {
       specialArgs = { inherit self; };
       modules = [
+        stylix.darwinModules.stylix
         ./hosts/macbook-air-m2.nix
         home-manager.darwinModules.home-manager
         {

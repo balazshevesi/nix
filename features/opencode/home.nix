@@ -3,29 +3,39 @@ let
   opencodeConfig = import ./config/settings.nix;
   opencodeNotifierConfig = import ./config/notifier.nix;
   opencodePackageJson = import ./config/package.nix;
-  opencodeThemeVscodeDarkModern = import ./config/theme-vscode-dark-modern.nix;
   hasBunLock = builtins.pathExists ./config/bun-lock.nix;
   opencodeBunLock =
     if hasBunLock then import ./config/bun-lock.nix else null;
 in {
-  home.activation.configureOpencode = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  programs.opencode = {
+    enable = true;
+    package = pkgs.opencode;
+    settings = opencodeConfig;
+    tui = {
+      scroll_speed = 1;
+    };
+  };
+
+  home.activation.configureOpencode = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
     opencode_dir="$HOME/.config/opencode"
-    theme_dir="$opencode_dir/themes"
     bun_install_dir="${config.home.homeDirectory}/.bun"
     bun_bin="${pkgs.bun}/bin/bun"
 
-    mkdir -p "$opencode_dir" "$theme_dir"
+    mkdir -p "$opencode_dir"
 
-    install -m 0644 ${pkgs.writeText "opencode.json" (builtins.toJSON opencodeConfig)} "$opencode_dir/opencode.json"
     install -m 0644 ${pkgs.writeText "opencode-notifier.json" (builtins.toJSON opencodeNotifierConfig)} "$opencode_dir/opencode-notifier.json"
     install -m 0644 ${pkgs.writeText "opencode-package.json" (builtins.toJSON opencodePackageJson)} "$opencode_dir/package.json"
-    install -m 0644 ${pkgs.writeText "vscode-dark-modern.json" (builtins.toJSON opencodeThemeVscodeDarkModern)} "$theme_dir/vscode-dark-modern.json"
 ${lib.optionalString hasBunLock ''
     install -m 0644 ${pkgs.writeText "opencode-bun.lock" (builtins.toJSON opencodeBunLock)} "$opencode_dir/bun.lock"
 ''}
 
     context7_key="$(/usr/bin/security find-generic-password -a "$USER" -s "context7_api_key" -w 2>/dev/null || true)"
     if [ -n "$context7_key" ]; then
+      if [ -L "$opencode_dir/opencode.json" ]; then
+        cp "$opencode_dir/opencode.json" "$opencode_dir/opencode.json.tmp"
+        mv "$opencode_dir/opencode.json.tmp" "$opencode_dir/opencode.json"
+      fi
+
       tmp_file="$(mktemp)"
       ${pkgs.jq}/bin/jq --arg key "$context7_key" '.mcp.context7.headers.CONTEXT7_API_KEY = $key' "$opencode_dir/opencode.json" > "$tmp_file"
       mv "$tmp_file" "$opencode_dir/opencode.json"

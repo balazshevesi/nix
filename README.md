@@ -8,8 +8,8 @@ Build config on my mac: `sudo darwin-rebuild switch --flake .#macbook-air-m2`
 
 # to do
 
-- [ ] Fix stylix build (not properly configured) (audit codebase for similar mistakes)
-- [ ] Make the styles centrilized (ghostty, ides, ect), make like "style packs"
+- [x] Fix stylix build (not properly configured) (audit codebase for similar mistakes)
+- [x] Make the styles centrilized (ghostty, ides, ect), make like "style packs"
 - [ ] Setup mac whisper
 - [ ] Setup JankyBorders properly https://github.com/FelixKratz/JankyBorders
 - [ ] Define chrome (more) extensions (currently broken)

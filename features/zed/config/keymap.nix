@@ -4,8 +4,6 @@
     bindings = {
       "alt-cmd-b" = "workspace::ToggleLeftDock";
       "cmd-b" = "workspace::ToggleRightDock";
-      "cmd-j" = "terminal_panel::ToggleFocus";
-      "ctrl-`" = "terminal_panel::ToggleFocus";
     };
   }
   {
@@ -26,12 +24,10 @@
         "buffer_search::Deploy"
         { focus = false; }
       ];
-      "escape escape" = [
-        "buffer_search::Deploy"
-        { focus = false; }
-      ];
-      "alt-e alt-e" = null;
       "cmd-e" = null;
+      "f19" = "editor::SelectLargerSyntaxNode";
+      "f18" = "editor::SelectSmallerSyntaxNode";
+      "tab" = "editor::Indent";
     };
   }
   {

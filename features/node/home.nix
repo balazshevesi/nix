@@ -1,10 +1,10 @@
 { config, pkgs, ... }: {
   home.packages = with pkgs; [
-    nodePackages.typescript
-    nodePackages.typescript-language-server
-    nodePackages.eslint
-    nodePackages.prettier
-    # nodePackages.kill-port
+    typescript
+    typescript-language-server
+    eslint
+    prettier
+    # kill-port
   ];
 
   home.sessionPath = [

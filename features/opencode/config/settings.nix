@@ -1,9 +1,4 @@
 {
-  "$schema" = "https://opencode.ai/config.json";
-  theme = "vscode-dark-modern";
-  tui = {
-    scroll_speed = 1;
-  };
   mcp = {
     context7 = {
       type = "remote";

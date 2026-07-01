@@ -1,0 +1,21 @@
+system: "base16"
+name: "VS Code Light Modern"
+author: "Balazs Hevesi"
+variant: "light"
+palette:
+  base00: "#F8F8F8" # editor/background
+  base01: "#FFFFFF" # panels
+  base02: "#EEF0F4" # selections/elements
+  base03: "#8A8A8A" # comments/line numbers
+  base04: "#6B6B6B" # muted text
+  base05: "#3B3B3B" # foreground
+  base06: "#000000" # bright foreground
+  base07: "#000000" # brightest foreground
+  base08: "#CD3131" # red/errors
+  base09: "#A31515" # orange/strings
+  base0A: "#949800" # yellow/warnings
+  base0B: "#107C10" # green/success
+  base0C: "#267F99" # cyan/types
+  base0D: "#005FB8" # blue/primary
+  base0E: "#BC05BC" # purple/secondary
+  base0F: "#CD3131" # brown/removed

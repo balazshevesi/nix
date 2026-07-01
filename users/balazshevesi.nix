@@ -8,6 +8,7 @@
     ../features/node/home.nix
     ../features/ohmyposh/home.nix
     ../features/opencode/home.nix
+    ../features/stylix/home.nix
     ../features/zed/home.nix
     ../features/zsh/home.nix
   ];

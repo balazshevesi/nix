@@ -1,6 +1,7 @@
 { self, pkgs, ... }: {
   imports = [
     ../features/macos-defaults/darwin.nix
+    ../features/stylix/darwin.nix
     ../features/wallpaper/darwin.nix
     ../features/homebrew/darwin.nix
     ../features/aerospace/darwin.nix

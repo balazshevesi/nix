@@ -1,5 +1,4 @@
 {
-  ui_font_family = ".SystemUIFont";
   show_edit_predictions = false;
   lsp.jdtls.settings.java_home =
     "/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home";
@@ -46,7 +45,6 @@
       max_severity = null;
     };
   };
-  buffer_font_family = "MesloLGS Nerd Font Mono";
   colorize_brackets = true;
   agent = {
     dock = "left";
@@ -149,13 +147,6 @@
     mode = "system";
     light = "Zed (Default)";
     dark = "VSCode Icons for Zed (Dark)";
-  };
-  ui_font_size = 16;
-  buffer_font_size = 15;
-  theme = {
-    mode = "system";
-    light = "VSCode Light+";
-    dark = "VSCode Dark Modern";
   };
   auto_install_extensions = {
     # languages
