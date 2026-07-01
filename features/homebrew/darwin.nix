@@ -14,4 +14,12 @@
       cleanup = "uninstall";
     };
   };
+
+  launchd.user.agents.jankyborders = {
+    serviceConfig = {
+      ProgramArguments = [ "/opt/homebrew/bin/borders" ];
+      RunAtLoad = true;
+      KeepAlive = true;
+    };
+  };
 }

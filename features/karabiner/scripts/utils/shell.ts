@@ -9,6 +9,8 @@ const SPACE_KEYCODES = {
 const AEROSPACE_BIN = "/opt/homebrew/bin/aerospace";
 const ETHER_WM_BIN = "/Users/balazshevesi/.bun/bin/bun";
 const ETHER_WM_ENTRYPOINT = "/Users/balazshevesi/github_repos/ether-wm/index.ts";
+const KARABINER_CLI =
+  "/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli";
 
 type SpaceNumber = keyof typeof SPACE_KEYCODES;
 
@@ -100,6 +102,8 @@ type Apps = "Chrome" | "Finder";
 
 const launchApp = (appName: Apps) => `open -a ${appName}`;
 
+const quoteShellArg = (value: string) => `'${value.replaceAll("'", `'"'"'`)}'`;
+
 export const shell = {
   paneru: (...commands: PaneruCommand[]) =>
     commands.map((command) => runPaneru(command)).join(" && "),
@@ -111,6 +115,11 @@ export const shell = {
     commands
       .map((cmd) => `${ETHER_WM_BIN} ${ETHER_WM_ENTRYPOINT} ${cmd}`)
       .join(" && "),
+
+  karabiner: {
+    selectProfile: (profileName: string) =>
+      `${quoteShellArg(KARABINER_CLI)} --select-profile ${quoteShellArg(profileName)}`,
+  },
 
   systemSettings: {
     workspace: {

@@ -11,4 +11,12 @@
       '';
     }
   ];
+
+  launchd.user.agents.aerospace-autostart = {
+    serviceConfig = {
+      ProgramArguments = [ "/usr/bin/open" "-a" "AeroSpace" ];
+      RunAtLoad = true;
+      KeepAlive = false;
+    };
+  };
 }
