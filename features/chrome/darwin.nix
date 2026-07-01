@@ -1,12 +1,25 @@
 { lib, pkgs, ... }:
 let
-  extensionIds = [
-    "ddkjiahejlhfcafbddmgiahcphecmpfh"
-    "gppongmhjkpfnbhagpmjfkannfbllamg"
-    "hdokiejnpimakedhajhdlcegeplioahd"
+  forceInstalledExtensionIds = [
+    "hdokiejnpimakedhajhdlcegeplioahd" # Lastpass
   ];
 
-  mkForcelist = updateUrl:
+  normalInstalledExtensionIds = [
+    "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
+    "gppongmhjkpfnbhagpmjfkannfbllamg" # Wappalyzer
+    "fdpohaocaechififmbbbbbknoalclacl" # GoFullPage - Full Page Screen Capture
+    "iobmefdldoplhmonnnkchglfdeepnfhd" # Google Search Keyboard Shortcuts
+    "nkbihfbeogaeaoehlefnkodbefgpgknn" # Metamask
+    "fmkadmapgofadopljbjfkapdkoienihi" # React Developer Tools
+    "jabopobgcpjmedljpbcaablpmlmfcogm" # WhatFont
+    "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
+    "khncfooichmfjbepaaaebmommgaepoid" # Unhook - Remove YouTube Recommended
+  ];
+
+  chromeUpdateUrl = "https://clients2.google.com/service/update2/crx";
+  heliumUpdateUrl = "https://clients2.9oo91e.qjz9zk/service/update2/crx";
+
+  mkForcelist = updateUrl: extensionIds:
     lib.concatStrings [
       "<key>ExtensionInstallForcelist</key>\n"
       "<array>\n"
@@ -15,8 +28,26 @@ let
       "</array>\n"
     ];
 
-  chromeForcelist = mkForcelist "https://clients2.google.com/service/update2/crx";
-  heliumForcelist = mkForcelist "https://clients2.9oo91e.qjz9zk/service/update2/crx";
+  mkExtensionSettings = updateUrl: extensionIds:
+    lib.concatStrings [
+      "<key>ExtensionSettings</key>\n"
+      "<dict>\n"
+      (lib.concatMapStrings (id: ''
+        <key>${id}</key>
+        <dict>
+          <key>installation_mode</key>
+          <string>normal_installed</string>
+          <key>update_url</key>
+          <string>${updateUrl}</string>
+        </dict>
+      '') extensionIds)
+      "</dict>\n"
+    ];
+
+  chromeForcelist = mkForcelist chromeUpdateUrl forceInstalledExtensionIds;
+  chromeExtensionSettings = mkExtensionSettings chromeUpdateUrl normalInstalledExtensionIds;
+  heliumForcelist = mkForcelist heliumUpdateUrl forceInstalledExtensionIds;
+  heliumExtensionSettings = mkExtensionSettings heliumUpdateUrl normalInstalledExtensionIds;
 
   chromeManagedPlist = pkgs.writeText "com.google.Chrome.plist" ''
     <?xml version="1.0" encoding="UTF-8"?>
@@ -24,6 +55,7 @@ let
     <plist version="1.0">
       <dict>
         ${chromeForcelist}
+        ${chromeExtensionSettings}
       </dict>
     </plist>
   '';
@@ -34,6 +66,7 @@ let
     <plist version="1.0">
       <dict>
         ${heliumForcelist}
+        ${heliumExtensionSettings}
       </dict>
     </plist>
   '';

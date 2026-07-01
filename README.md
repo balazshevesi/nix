@@ -10,5 +10,3 @@ Build config on my mac: `sudo nix run nix-darwin -- switch --flake .#macbook-air
 
 
 # to do
-
-- [ ] Define chrome (more) extensions (currently broken)
