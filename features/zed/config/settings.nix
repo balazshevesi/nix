@@ -9,6 +9,8 @@
     };
     enable_lsp_tasks = true;
   };
+  lsp.codebook.initialization_options.globalConfigPath =
+    "~/.config/codebook/baseline.toml";
   drag_and_drop_selection = {
     enabled = true;
     delay= 300;
