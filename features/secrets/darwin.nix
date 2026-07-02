@@ -29,6 +29,19 @@ in {
     install -d -o ${user} -g staff -m 0700 "${home}/.config/github-copilot"
   '';
 
+  system.activationScripts.postActivation.text = lib.mkAfter ''
+    for key in id_ed25519 id_rsa; do
+      private_key="${home}/.ssh/$key"
+      public_key="$private_key.pub"
+
+      if [ -f "$private_key" ] && [ ! -f "$public_key" ]; then
+        /usr/bin/ssh-keygen -y -f "$private_key" > "$public_key"
+        chown ${user}:staff "$public_key"
+        chmod 0644 "$public_key"
+      fi
+    done
+  '';
+
   sops.secrets = {
     "ssh/id_ed25519" = mkSecret ../../secrets/ssh/id_ed25519 "${home}/.ssh/id_ed25519";
     "ssh/id_rsa" = mkSecret ../../secrets/ssh/id_rsa "${home}/.ssh/id_rsa";
