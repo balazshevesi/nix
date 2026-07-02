@@ -39,5 +39,6 @@
     "ledger-wallet"
     "obsidian"
     "font-meslo-lg-nerd-font"
+    "anki"
   ];
 }

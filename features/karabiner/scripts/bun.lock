@@ -1,0 +1,17 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "karabiner-scripts",
+      "dependencies": {
+        "karabiner.ts": "1.36.0",
+        "nanoid": "5.1.6",
+      },
+    },
+  },
+  "packages": {
+    "karabiner.ts": ["karabiner.ts@1.36.0", "", {}, "sha512-iXg3/yZ46XodUXu2+TrIkrtbR71UFXR1dhDwpF8R6vCgd5i2r2+H7evfwQZM970oPd04PWdJk5AhvJY/582M7Q=="],
+
+    "nanoid": ["nanoid@5.1.6", "", { "bin": { "nanoid": "bin/nanoid.js" } }, "sha512-c7+7RQ+dMB5dPwwCp4ee1/iV/q2P6aK1mTZcfr1BTuVlyW9hJYiMPybJCcnBlQtuSmTIWNeazm/zqNoZSSElBg=="],
+  }
+}

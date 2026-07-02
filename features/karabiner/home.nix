@@ -23,6 +23,12 @@ in {
   home.activation.configureKarabiner = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p "$HOME/.config/karabiner"
 
-    ${pkgs.bun}/bin/bun run ${karabinerScripts}/index.ts
+    tmp_dir="$(mktemp -d)"
+    trap 'rm -rf "$tmp_dir"' EXIT
+
+    cp -R ${karabinerScripts}/. "$tmp_dir/"
+    chmod -R u+w "$tmp_dir"
+    ${pkgs.bun}/bin/bun install --cwd "$tmp_dir" --frozen-lockfile
+    ${pkgs.bun}/bin/bun "$tmp_dir/index.ts"
   '';
 }

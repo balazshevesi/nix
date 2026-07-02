@@ -3,9 +3,11 @@
     ../features/aerospace/home.nix
     ../features/codebook/home.nix
     # ../features/paneru/home.nix
+    ../features/git/home.nix
     ../features/ghostty/home.nix
     ../features/hammerspoon/home.nix
     ../features/karabiner/home.nix
+    ../features/neovim/home.nix
     ../features/node/home.nix
     ../features/ohmyposh/home.nix
     ../features/opencode/home.nix
