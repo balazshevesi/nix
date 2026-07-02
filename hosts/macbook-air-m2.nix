@@ -1,6 +1,7 @@
 { self, pkgs, ... }: {
   imports = [
     ../features/macos-defaults/darwin.nix
+    ../features/secrets/darwin.nix
     ../features/stylix/darwin.nix
     ../features/wallpaper/darwin.nix
     ../features/homebrew/darwin.nix
@@ -18,6 +19,12 @@
     pkgs.nixd
   ];
   programs.zsh.enable = true;
+
+  networking = {
+    computerName = "Balazs MacBook Air M2";
+    hostName = "macbook-air-m2";
+    localHostName = "macbook-air-m2";
+  };
 
   nix.enable = false;
   nix.settings.experimental-features = "nix-command flakes";
