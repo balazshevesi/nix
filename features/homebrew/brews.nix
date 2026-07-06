@@ -10,7 +10,7 @@
     "telnet"
     "openjdk@21"
     "maven"
-    "neofetch" # no longer maintained, consider switching
+#    "neofetch" # no longer maintained, consider switching
     "zig"
     "rust"
     "cargo-c"
