@@ -17,10 +17,10 @@ This repo uses `sops-nix` with age encryption. Encrypted secret files live under
 Private age key path:
 
 ```sh
-$HOME/Library/Application Support/sops/age/keys.txt
+$HOME/.config/nix/.sops/age/keys.txt
 ```
 
-That private key decrypts every file in `secrets/`. Back it up somewhere secure before reinstalling macOS. On a fresh machine, restore it to the same path before running the nix-darwin switch.
+That private key decrypts every file in `secrets/`. The `.sops/` directory is gitignored, but back it up somewhere secure before reinstalling macOS. On a fresh machine, restore it to the same path before running the nix-darwin switch.
 
 The matching public recipient is stored in `.sops.yaml`. The public recipient can be committed; only the private key must stay secret.
 
@@ -39,7 +39,7 @@ sops --decrypt --input-type binary --output-type binary secrets/npm/npmrc > /tmp
 Edit an encrypted secret in place:
 
 ```sh
-SOPS_AGE_KEY_FILE="$HOME/Library/Application Support/sops/age/keys.txt" sops secrets/npm/npmrc
+SOPS_AGE_KEY_FILE="$HOME/.config/nix/.sops/age/keys.txt" sops secrets/npm/npmrc
 ```
 
 Re-encrypt a local file into this repo:

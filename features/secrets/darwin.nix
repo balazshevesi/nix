@@ -16,7 +16,7 @@ in {
     ssh-to-age
   ];
 
-  sops.age.keyFile = "${home}/Library/Application Support/sops/age/keys.txt";
+  sops.age.keyFile = "${home}/.config/nix/.sops/age/keys.txt";
 
   system.activationScripts.preActivation.text = lib.mkBefore ''
     install -d -o ${user} -g staff -m 0700 "${home}/.ssh"

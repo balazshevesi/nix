@@ -1,4 +1,5 @@
 /result
+/.sops/
 deno.lock
 node_modules/
 bun.lock

@@ -4,7 +4,7 @@ set -euo pipefail
 repo_url="https://github.com/balazshevesi/nix"
 config_dir="$HOME/.config/nix"
 flake_host="macbook-air-m2"
-sops_age_key_file="$HOME/Library/Application Support/sops/age/keys.txt"
+sops_age_key_file="$HOME/.config/nix/.sops/age/keys.txt"
 
 if ! sudo -v; then
   echo "Administrator privileges are required to switch the nix-darwin system." >&2
