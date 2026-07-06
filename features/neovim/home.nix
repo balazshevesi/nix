@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs.neovim = {
     enable = true;
-    package = pkgs.neovim;
+    package = pkgs.neovim-unwrapped;
     withPython3 = true;
     withRuby = true;
   };
