@@ -1,0 +1,13 @@
+Restore the SOPS age key from the Kingston drive:
+
+```sh
+mkdir -p "$HOME/.config/nix/.sops/age"
+cp "/Volumes/KINGSTON/.sops/age/keys.txt" "$HOME/.config/nix/.sops/age/keys.txt"
+chmod 600 "$HOME/.config/nix/.sops/age/keys.txt"
+```
+
+Run the fresh Mac bootstrap:
+
+```sh
+/bin/bash -c "$(curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/balazshevesi/nix/main/bootstrap.sh)"
+```
