@@ -17,7 +17,11 @@
 
     initContent = lib.mkMerge [
       (lib.mkOrder 1000 ''
-        path=(/usr/local/bin $path)
+        if [ -x /opt/homebrew/bin/brew ]; then
+          eval "$(/opt/homebrew/bin/brew shellenv)"
+        elif [ -x /usr/local/bin/brew ]; then
+          eval "$(/usr/local/bin/brew shellenv)"
+        fi
 
         export NVM_DIR="$HOME/.nvm"
         [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
@@ -44,7 +48,9 @@
       '')
 
       (lib.mkOrder 1300 ''
-        eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.omp.json)"
+        if command -v oh-my-posh >/dev/null 2>&1; then
+          eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.omp.json)"
+        fi
       '')
     ];
   };
