@@ -1,15 +1,186 @@
 { config, lib, ... }:
 let
   primaryUser = config.system.primaryUser;
-  wallpaperPath = "/Users/balazshevesi/Library/Application Support/com.apple.mobileAssetDesktop/Catalina.heic";
+  wallpaperStorePath = "/Users/${primaryUser}/Library/Application Support/com.apple.wallpaper/Store/Index.plist";
+  # previousWallpaperPath = "/Users/balazshevesi/Library/Application Support/com.apple.mobileAssetDesktop/Catalina.heic";
+  wallpaperStorePlist = builtins.toFile "wallpaper-index.plist" ''
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+      <key>AllSpacesAndDisplays</key>
+      <dict>
+        <key>Desktop</key>
+        <dict>
+          <key>Content</key>
+          <dict>
+            <key>Choices</key>
+            <array>
+              <dict>
+                <key>Configuration</key>
+                <data>
+                YnBsaXN0MDDRAQJUdHlwZVtjdXN0
+                b21Db2xvcggLEAAAAAAAAAEBAAAA
+                AAAAAAMAAAAAAAAAAAAAAAAAAAAc
+                </data>
+                <key>Files</key>
+                <array/>
+                <key>Provider</key>
+                <string>com.apple.wallpaper.choice.color</string>
+              </dict>
+            </array>
+            <key>EncodedOptionValues</key>
+            <data>
+            YnBsaXN0MDDRAQJWdmFsdWVz0gMEBRNbY3VzdG9tQ29s
+            b3JfEBZzaG91bGRHZW5lcmF0ZUdyYWRpZW500QYHVWNv
+            bG9y0QgJUl8w0QYK0gsMDRJaY29tcG9uZW50c1pjb2xv
+            clNwYWNlpA4PEBEjP8L4HA4HA4IjP7PV6vV6vV8jP6zZ
+            bLZbLZcjP/AAAAAAAABPEENicGxpc3QwMF8QF2tDR0Nv
+            bG9yU3BhY2VHZW5lcmljUkdCCAAAAAAAAAEBAAAAAAAA
+            AAEAAAAAAAAAAAAAAAAAAAAi0RQVVnRvZ2dsZdEIFtEX
+            GFRpc09uCQgLEhcjPD9FSEtOU15pbneAiZLY2+Ll6O0A
+            AAAAAAABAQAAAAAAAAAZAAAAAAAAAAAAAAAAAAAA7g==
+            </data>
+            <key>Shuffle</key>
+            <string>$null</string>
+          </dict>
+          <key>LastSet</key>
+          <date>2026-07-07T13:45:39Z</date>
+          <key>LastUse</key>
+          <date>2026-07-07T13:47:19Z</date>
+        </dict>
+        <key>Idle</key>
+        <dict>
+          <key>Content</key>
+          <dict>
+            <key>Choices</key>
+            <array>
+              <dict>
+                <key>Configuration</key>
+                <data>
+                YnBsaXN0MDDSAQIDBFR0eXBlU3Vy
+                bF8QFHN5c3RlbURlc2t0b3BQaWN0
+                dXJl0QUGWHJlbGF0aXZlXxA8Zmls
+                ZTovLy9TeXN0ZW0vTGlicmFyeS9E
+                ZXNrdG9wJTIwUGljdHVyZXMvQ2F0
+                YWxpbmEubWFkZXNrdG9wCA0SFi0w
+                OQAAAAAAAAEBAAAAAAAAAAcAAAAA
+                AAAAAAAAAAAAAAB4
+                </data>
+                <key>Files</key>
+                <array/>
+                <key>Provider</key>
+                <string>com.apple.wallpaper.choice.dynamic</string>
+              </dict>
+            </array>
+            <key>EncodedOptionValues</key>
+            <data>
+            YnBsaXN0MDDRAQJWdmFsdWVz0AgLEgAAAAAAAAEBAAAA
+            AAAAAAMAAAAAAAAAAAAAAAAAAAAT
+            </data>
+            <key>Shuffle</key>
+            <string>$null</string>
+          </dict>
+          <key>LastSet</key>
+          <date>2026-07-06T15:52:39Z</date>
+          <key>LastUse</key>
+          <date>2026-07-07T13:47:19Z</date>
+        </dict>
+        <key>Type</key>
+        <string>individual</string>
+      </dict>
+      <key>Displays</key>
+      <dict/>
+      <key>Spaces</key>
+      <dict/>
+      <key>SystemDefault</key>
+      <dict>
+        <key>Desktop</key>
+        <dict>
+          <key>Content</key>
+          <dict>
+            <key>Choices</key>
+            <array>
+              <dict>
+                <key>Configuration</key>
+                <data>
+                YnBsaXN0MDDRAQJUdHlwZVtjdXN0
+                b21Db2xvcggLEAAAAAAAAAEBAAAA
+                AAAAAAMAAAAAAAAAAAAAAAAAAAAc
+                </data>
+                <key>Files</key>
+                <array/>
+                <key>Provider</key>
+                <string>com.apple.wallpaper.choice.color</string>
+              </dict>
+            </array>
+            <key>EncodedOptionValues</key>
+            <data>
+            YnBsaXN0MDDRAQJWdmFsdWVz0gMEBRNbY3VzdG9tQ29s
+            b3JfEBZzaG91bGRHZW5lcmF0ZUdyYWRpZW500QYHVWNv
+            bG9y0QgJUl8w0QYK0gsMDRJaY29tcG9uZW50c1pjb2xv
+            clNwYWNlpA4PEBEjP8L4HA4HA4IjP7PV6vV6vV8jP6zZ
+            bLZbLZcjP/AAAAAAAABPEENicGxpc3QwMF8QF2tDR0Nv
+            bG9yU3BhY2VHZW5lcmljUkdCCAAAAAAAAAEBAAAAAAAA
+            AAEAAAAAAAAAAAAAAAAAAAAi0RQVVnRvZ2dsZdEIFtEX
+            GFRpc09uCQgLEhcjPD9FSEtOU15pbneAiZLY2+Ll6O0A
+            AAAAAAABAQAAAAAAAAAZAAAAAAAAAAAAAAAAAAAA7g==
+            </data>
+            <key>Shuffle</key>
+            <string>$null</string>
+          </dict>
+          <key>LastSet</key>
+          <date>2026-07-07T13:45:39Z</date>
+          <key>LastUse</key>
+          <date>2026-07-07T13:45:39Z</date>
+        </dict>
+        <key>Idle</key>
+        <dict>
+          <key>Content</key>
+          <dict>
+            <key>Choices</key>
+            <array>
+              <dict>
+                <key>Configuration</key>
+                <data>
+                YnBsaXN0MDDSAQIDBFR0eXBlU3Vy
+                bF8QFHN5c3RlbURlc2t0b3BQaWN0
+                dXJl0QUGWHJlbGF0aXZlXxA8Zmls
+                ZTovLy9TeXN0ZW0vTGlicmFyeS9E
+                ZXNrdG9wJTIwUGljdHVyZXMvQ2F0
+                YWxpbmEubWFkZXNrdG9wCA0SFi0w
+                OQAAAAAAAAEBAAAAAAAAAAcAAAAA
+                AAAAAAAAAAAAAAB4
+                </data>
+                <key>Files</key>
+                <array/>
+                <key>Provider</key>
+                <string>com.apple.wallpaper.choice.dynamic</string>
+              </dict>
+            </array>
+            <key>EncodedOptionValues</key>
+            <data>
+            YnBsaXN0MDDRAQJWdmFsdWVz0AgLEgAAAAAAAAEBAAAA
+            AAAAAAMAAAAAAAAAAAAAAAAAAAAT
+            </data>
+            <key>Shuffle</key>
+            <string>$null</string>
+          </dict>
+          <key>LastSet</key>
+          <date>2026-07-06T15:52:39Z</date>
+          <key>LastUse</key>
+          <date>2026-07-07T13:45:38Z</date>
+        </dict>
+        <key>Type</key>
+        <string>individual</string>
+      </dict>
+    </dict>
+    </plist>
+  '';
 in {
   system.activationScripts.postActivation.text = lib.mkAfter ''
-    if [ -f "${wallpaperPath}" ]; then
-      uid="$(id -u ${primaryUser})"
-      launchctl asuser "$uid" sudo -u ${primaryUser} --set-home \
-        /usr/bin/osascript -e 'tell application "System Events" to tell every desktop to set picture to POSIX file "${wallpaperPath}"'
-    else
-      echo "Wallpaper file not found: ${wallpaperPath}" >&2
-    fi
+    uid="$(id -u ${primaryUser})"
+    /usr/bin/install -m 0644 -o ${primaryUser} -g staff "${wallpaperStorePlist}" "${wallpaperStorePath}"
+    launchctl asuser "$uid" sudo -u ${primaryUser} --set-home /usr/bin/killall WallpaperAgent 2>/dev/null || true
   '';
 }

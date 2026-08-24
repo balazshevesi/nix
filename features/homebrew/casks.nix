@@ -28,7 +28,7 @@
     "betterdisplay"
     "hammerspoon"
     "numi"
-    "multipass"
+    # "multipass" note: includes a daemon
     # games
     "steam"
     "nvidia-geforce-now"

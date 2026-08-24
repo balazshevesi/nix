@@ -27,7 +27,6 @@
       "cmd-e" = null;
       "f19" = "editor::SelectLargerSyntaxNode";
       "f18" = "editor::SelectSmallerSyntaxNode";
-      "tab" = "editor::Indent";
     };
   }
   {

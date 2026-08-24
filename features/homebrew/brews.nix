@@ -16,5 +16,9 @@
     "cargo-c"
     "cocoapods"
     "gh"
+    "pdftohtml"
+    "xpdf"
+    "go"
+    "doppler"
   ];
 }
