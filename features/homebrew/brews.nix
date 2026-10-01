@@ -1,5 +1,6 @@
 {
   homebrew.brews = [
+    "schpet/tap/linear"
     "borders"
     "docker"
     "python@3.14"
@@ -10,15 +11,20 @@
     "telnet"
     "openjdk@21"
     "maven"
+    "nvm"
+    "just"
 #    "neofetch" # no longer maintained, consider switching
     "zig"
     "rust"
     "cargo-c"
     "cocoapods"
     "gh"
+    "ffmpeg"
     "pdftohtml"
     "xpdf"
     "go"
     "doppler"
+    "gnupg"
+    "dopplerhq/cli/doppler"
   ];
 }
