@@ -1,5 +1,6 @@
 {
   homebrew.brews = [
+    "schpet/tap/linear"
     "borders"
     "docker"
     "python@3.14"
@@ -16,5 +17,6 @@
     "cargo-c"
     "cocoapods"
     "gh"
+    "ffmpeg"
   ];
 }

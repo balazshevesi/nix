@@ -1,6 +1,10 @@
 {
   homebrew.taps = [
     {
+      name = "schpet/tap";
+      trusted = true;
+    }
+    {
       name = "FelixKratz/formulae";
       trusted = true;
     }
