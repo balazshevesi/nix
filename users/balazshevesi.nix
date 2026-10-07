@@ -2,6 +2,7 @@
   imports = [
     ../features/aerospace/home.nix
     ../features/codebook/home.nix
+    ../features/codex/home.nix
     # ../features/paneru/home.nix
     ../features/git/home.nix
     ../features/ghostty/home.nix

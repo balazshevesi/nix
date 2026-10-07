@@ -10,6 +10,19 @@
 sudo nix run nix-darwin -- switch --flake .#macbook-air-m2
 ```
 
+## Codex
+
+Home Manager manages `~/.codex/config.toml` and the global `~/.codex/AGENTS.md` from `features/codex/config/`. Edit those source files and rebuild to update Codex; start a new Codex session to load instruction changes. Project `AGENTS.md` files remain in their repositories.
+
+Before the first switch, back up and move aside the existing unmanaged files so Home Manager can create its symlinks:
+
+```sh
+mv ~/.codex/config.toml ~/.codex/config.toml.before-nix
+mv ~/.codex/AGENTS.md ~/.codex/AGENTS.md.before-nix
+```
+
+The installed files are read-only Nix store symlinks. Codex settings changes that write to `config.toml` must instead be made in this repository. The initial config preserves the existing settings, including app-managed MCP and plugin entries; update machine-specific paths and app-version paths when needed. Authentication remains managed separately through `sops-nix`.
+
 ## Secrets
 
 This repo uses `sops-nix` with age encryption. Encrypted secret files live under `secrets/` and are safe to commit. The private age key is not safe to commit.
