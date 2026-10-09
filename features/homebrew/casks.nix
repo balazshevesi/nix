@@ -10,6 +10,10 @@
     "jetbrains-toolbox"
     "postman"
     "wireshark-app"
+    "codex"
+    "docker"
+    "orbstack"
+    "cloc"
     # web
     "google-chrome"
     "helium-browser"
@@ -28,7 +32,7 @@
     "betterdisplay"
     "hammerspoon"
     "numi"
-    "multipass"
+    # "multipass" note: includes a daemon
     # games
     "steam"
     "nvidia-geforce-now"

@@ -180,7 +180,6 @@ export const hyperLayer = layer("⇪", "hyper")
     // map("w").to("z", ["command"]),
     // map("e").to("z", ["command", "shift"]),
 
-    
     // Brackets: specific modifier combos must come before the plain mapping.
     map("u", ["command"]).to(symbols["<"]),
     map("o", ["command"]).to(symbols[">"]),
@@ -204,6 +203,7 @@ export const hyperLayer = layer("⇪", "hyper")
     map("n", "shift").to("f2", "fn"),
     map("m").to("f18"),
     map("n").to("f19"),
+    map("q").to("f2", ["left_control", "fn"]),
 
     ...withKey("g", [
       map("i").to(repeatKey("↑", 5)),

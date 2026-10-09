@@ -11,12 +11,20 @@
     "telnet"
     "openjdk@21"
     "maven"
-    "neofetch" # no longer maintained, consider switching
+    "nvm"
+    "just"
+#    "neofetch" # no longer maintained, consider switching
     "zig"
     "rust"
     "cargo-c"
     "cocoapods"
     "gh"
     "ffmpeg"
+    "pdftohtml"
+    "xpdf"
+    "go"
+    "doppler"
+    "gnupg"
+    "dopplerhq/cli/doppler"
   ];
 }

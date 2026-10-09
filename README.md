@@ -10,6 +10,10 @@
 sudo nix run nix-darwin -- switch --flake .#macbook-air-m2
 ```
 
+```sh
+sudo nix run nix-darwin -- switch --flake .#macbook-air-m2 --no-update-lock-file --offline
+```
+
 ## Codex
 
 Home Manager manages `~/.codex/config.toml` and the global `~/.codex/AGENTS.md` from `features/codex/config/`. Edit those source files and rebuild to update Codex; start a new Codex session to load instruction changes. Project `AGENTS.md` files remain in their repositories.
@@ -31,7 +35,7 @@ Private age key path:
 
 ```sh
 $HOME/.config/nix/.sops/age/keys.txt
-```
+``
 
 That private key decrypts every file in `secrets/`. The `.sops/` directory is gitignored, but back it up somewhere secure before reinstalling macOS. On a fresh machine, restore it to the same path before running the nix-darwin switch.
 
@@ -100,3 +104,4 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 
 - [ ] look into how i could maybe use the lastpass cli and maybe gh cli
 - [ ] audit codebase
+- [ ] Fix the themes for dark-mode Zed and light-mode opencode

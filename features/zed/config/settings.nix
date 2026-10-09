@@ -136,6 +136,9 @@
     folder_icons = true;
     file_icons = true;
   };
+  git_panel = {
+    "dock" = "left";
+  };
   project_panel = {
     dock = "right";
     auto_fold_dirs = false;

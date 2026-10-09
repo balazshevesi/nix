@@ -1,10 +1,7 @@
 { lib, pkgs, ... }:
 let
-  forceInstalledExtensionIds = [
-    "hdokiejnpimakedhajhdlcegeplioahd" # Lastpass
-  ];
-
   normalInstalledExtensionIds = [
+    "hdokiejnpimakedhajhdlcegeplioahd" # Lastpass
     "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
     "gppongmhjkpfnbhagpmjfkannfbllamg" # Wappalyzer
     "fdpohaocaechififmbbbbbknoalclacl" # GoFullPage - Full Page Screen Capture
@@ -44,9 +41,7 @@ let
       "</dict>\n"
     ];
 
-  chromeForcelist = mkForcelist chromeUpdateUrl forceInstalledExtensionIds;
   chromeExtensionSettings = mkExtensionSettings chromeUpdateUrl normalInstalledExtensionIds;
-  heliumForcelist = mkForcelist heliumUpdateUrl forceInstalledExtensionIds;
   heliumExtensionSettings = mkExtensionSettings heliumUpdateUrl normalInstalledExtensionIds;
 
   chromeManagedPlist = pkgs.writeText "com.google.Chrome.plist" ''
@@ -54,7 +49,6 @@ let
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
       <dict>
-        ${chromeForcelist}
         ${chromeExtensionSettings}
       </dict>
     </plist>
@@ -65,7 +59,6 @@ let
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
     <plist version="1.0">
       <dict>
-        ${heliumForcelist}
         ${heliumExtensionSettings}
       </dict>
     </plist>
