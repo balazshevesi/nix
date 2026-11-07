@@ -15,16 +15,16 @@
     "just"
 #    "neofetch" # no longer maintained, consider switching
     "zig"
-    "rust"
+    "rustup"
     "cargo-c"
+    "cloc"
     "cocoapods"
     "gh"
     "ffmpeg"
-    "pdftohtml"
     "xpdf"
     "go"
     "doppler"
     "gnupg"
-    "dopplerhq/cli/doppler"
+    # "dopplerhq/cli/doppler"
   ];
 }

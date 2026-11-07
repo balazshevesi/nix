@@ -7,11 +7,38 @@
 ## Rebuild
 
 ```sh
-sudo nix run nix-darwin -- switch --flake .#macbook-air-m2
+sudo -H darwin-rebuild switch --flake .#macbook-air-m2 --no-update-lock-file
 ```
 
+New files imported by the flake must be staged with `git add` before rebuilding;
+they do not need to be committed. Rebuild with network access so Nix can download
+missing packages. Use `--offline` only when all required inputs and packages are
+already cached locally.
+
+Rebuilds install the declared Homebrew packages without uninstalling other apps
+or tools installed manually.
+
+## Rust
+
+Nix manages Rustup through Homebrew, and Zsh adds it to PATH. On a fresh machine,
+initialize the toolchain once after rebuilding and opening a new terminal:
+
 ```sh
-sudo nix run nix-darwin -- switch --flake .#macbook-air-m2 --no-update-lock-file --offline
+rustup default stable
+rustup component add --toolchain stable rustfmt clippy rust-src rust-analyzer
+```
+
+Rustup manages the toolchain under `~/.rustup`, separately from `flake.lock`.
+
+Update the toolchain with `rustup update stable`. After rebuilding, open a new
+terminal and try:
+
+```sh
+cargo new hello-rust
+cd hello-rust
+cargo run
+cargo fmt
+cargo clippy
 ```
 
 ## Codex

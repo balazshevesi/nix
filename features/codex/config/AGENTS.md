@@ -8,3 +8,5 @@
 - When creating a pull request, create it as a draft unless explicitly instructed otherwise.
 - Keep pull request descriptions concise.
 - When creating Git worktrees, use the same worktree location convention as Zed.
+
+When interacting with Cloudflare, use the cf CLI unless the project has a Wrangler configuration file.

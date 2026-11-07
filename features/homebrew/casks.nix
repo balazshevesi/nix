@@ -13,7 +13,6 @@
     "codex"
     "docker"
     "orbstack"
-    "cloc"
     # web
     "google-chrome"
     "helium-browser"
