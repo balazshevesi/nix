@@ -15,6 +15,7 @@ import { repeatKey } from "../utils/repeatKey.ts";
 const HOMEROW: FromKeyParam[] = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
 const NUMBER_LAYER = "hyper_number_layer";
 const a = shell.aerospace;
+const r = shell.rift;
 const ether = shell.ether;
 const TRACKPAD_SPEED_NORMAL = 0.6875;
 const TRACKPAD_SPEED_BOOSTED = 2.5;
@@ -75,6 +76,58 @@ const aerospaceBindings = [
   map("4").to$(a("workspace 4")),
   map("5").to$(a("workspace 5")),
   map("tab").to$(a("workspace-back-and-forth")),
+];
+
+const riftBindings = [
+  ...withKey("spacebar", [
+    // Previous/next workspace.
+    map("w").to$(r("workspace prev")),
+    map("r").to$(r("workspace next")),
+
+    // Move the active workspace between displays; Shift bindings precede focus bindings.
+    map("i", "shift").to$(r("display move-workspace --direction up")),
+    map("j", "shift").to$(r("display move-workspace --direction left")),
+    map("k", "shift").to$(r("display move-workspace --direction down")),
+    map("l", "shift").to$(r("display move-workspace --direction right")),
+
+    map("j").to$(r("window focus left")),
+    map("k").to$(r("window focus down")),
+    map("i").to$(r("window focus up")),
+    map("l").to$(r("window focus right")),
+
+    map("s").to$(r("layout move-node left")),
+    map("d").to$(r("layout move-node down")),
+    map("f").to$(r("layout move-node right")),
+    map("e").to$(r("layout move-node up")),
+
+    // Rift resizes by about 5% rather than AeroSpace's 150-point steps.
+    map("n").to$(r("window resize-shrink --orientation smart")),
+    map("h").to$(r("window resize-grow --orientation smart")),
+
+    // Rift workspace indexes are zero-based; displayed names remain 1–5.
+    map("1").to$(r("workspace move-window 0 --follow")),
+    map("2").to$(r("workspace move-window 1 --follow")),
+    map("3").to$(r("workspace move-window 2 --follow")),
+    map("4").to$(r("workspace move-window 3 --follow")),
+    map("5").to$(r("workspace move-window 4 --follow")),
+
+    map(";").to$(r("window toggle-fullscreen")),
+    // map(";").to$(r("mission-control show-all")),
+    map("quote").to$(r("mission-control show-all")),
+    map("comma").to$(r("workspace set-layout stack")),
+    map("period").to$(r("workspace set-layout traditional")),
+    map("m").to$(r("window toggle-float")),
+    map("q").to$(r("layout balance")),
+    // Rift has no direct flatten-workspace-tree equivalent; leave z unbound.
+    //
+  ]),
+
+  map("1").to$(r("workspace switch 0")),
+  map("2").to$(r("workspace switch 1")),
+  map("3").to$(r("workspace switch 2")),
+  map("4").to$(r("workspace switch 3")),
+  map("5").to$(r("workspace switch 4")),
+  map("tab").to$(r("workspace last")),
 ];
 
 const etherBindings = [
@@ -158,7 +211,8 @@ export const hyperLayer = layer("⇪", "hyper")
     // ...etherBindings,
 
     // aerospace bindings
-    ...aerospaceBindings,
+    // ...aerospaceBindings,
+    ...riftBindings,
 
     ...withCondition(ifVar(NUMBER_LAYER))([
       ...HOMEROW.map((l, i) => map(l).to(String(i + 1) as ToKeyParam)),

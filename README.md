@@ -18,6 +18,40 @@ already cached locally.
 Rebuilds install the declared Homebrew packages without uninstalling other apps
 or tools installed manually.
 
+## Rift window manager
+
+Rift is installed through Homebrew and started by the Nix-managed user LaunchAgent
+`org.nixos.rift`. Do not also install Rift's own service or start it with
+`brew services`; Nix manages its startup.
+
+For the first switch, quit AeroSpace, then run the rebuild command above. Grant
+`/opt/homebrew/bin/rift` Accessibility access in System Settings → Privacy &
+Security. Nix enables "Displays have separate Spaces"; log out and back in if
+that setting changed. After granting permission, restart Rift with:
+
+```sh
+launchctl kickstart -k "gui/$(id -u)/org.nixos.rift"
+rift-cli query displays
+```
+
+Edit `features/rift/config/config.toml` and rebuild to change settings. Home Manager
+links it into `~/.config/rift/config.toml` as a read-only Nix store file, so make
+changes here rather than through Rift's Settings window. If changes do not reload
+automatically after a rebuild, run `rift-cli execute config reload`.
+
+Karabiner retains the existing Hyper shortcuts and five workspaces named 1–5.
+Hyper + Space + N/H resizes by roughly 5% per step. Hyper + Space + comma/period
+selects stack/traditional layout; it no longer cycles orientation. Hyper + Space + Z
+is unbound because Rift has no direct equivalent of AeroSpace's tree flattening.
+Borders runs independently with the previous colors and width.
+
+To switch back, comment out the Rift imports and uncomment the AeroSpace imports
+in `hosts/macbook-air-m2.nix` and `users/balazshevesi.nix`. In
+`features/karabiner/scripts/layers/hyperLayer.ts`, comment out `...riftBindings`
+and uncomment `...aerospaceBindings`, then rebuild. The AeroSpace configuration
+and bindings are preserved. Homebrew cleanup is disabled, so the AeroSpace app
+remains installed during the trial.
+
 ## Rust
 
 Nix manages Rustup through Homebrew, and Zsh adds it to PATH. On a fresh machine,

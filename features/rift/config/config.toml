@@ -1,0 +1,42 @@
+[settings]
+default_disable = false
+animate = true
+animation_duration = 0.2
+focus_follows_mouse = false
+mouse_follows_focus = false
+hot_reload = true
+
+[settings.ui.menu_bar]
+enabled = true
+show_empty = true
+mode = "all"
+display_style = "label"
+active_label = "name"
+
+[settings.ui.mission_control]
+enabled = true
+show_empty_workspaces = true
+activate_on_hotkey_release = false
+
+[settings.layout]
+mode = "traditional"
+
+[settings.layout.gaps.inner]
+horizontal = 10
+vertical = 10
+
+[settings.layout.gaps.outer]
+top = 5
+bottom = 5
+left = 5
+right = 5
+
+[virtual_workspaces]
+enabled = true
+mode = "global"
+# mode = "per_display"
+default_workspace_count = 5
+workspace_names = ["1", "2", "3", "4", "5"]
+
+# Karabiner owns the shortcuts; replace Rift's bundled keymap.
+[keys]

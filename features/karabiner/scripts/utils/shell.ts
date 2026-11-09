@@ -7,6 +7,7 @@ const SPACE_KEYCODES = {
 } as const;
 
 const AEROSPACE_BIN = "/opt/homebrew/bin/aerospace";
+const RIFT_CLI_BIN = "/opt/homebrew/bin/rift-cli";
 const ETHER_WM_BIN = "/Users/balazshevesi/.bun/bin/bun";
 const ETHER_WM_ENTRYPOINT = "/Users/balazshevesi/github_repos/ether-wm/index.ts";
 const KARABINER_CLI =
@@ -59,6 +60,25 @@ type AerospaceSubcommand =
 
 type AerospaceCommand = `${AerospaceSubcommand}${"" | ` ${string}`}`;
 
+type RiftDirection = "left" | "right" | "up" | "down";
+type RiftWorkspace = 0 | 1 | 2 | 3 | 4;
+type RiftCommand =
+  | `display move-workspace --direction ${RiftDirection}`
+  | `window focus ${RiftDirection}`
+  | `layout move-node ${RiftDirection}`
+  | `window resize-${"grow" | "shrink"} --orientation smart`
+  | `workspace switch ${RiftWorkspace}`
+  | `workspace move-window ${RiftWorkspace} --follow`
+  | "workspace prev"
+  | "workspace next"
+  | "workspace last"
+  | "workspace set-layout stack"
+  | "workspace set-layout traditional"
+  | "window toggle-fullscreen"
+  | "mission-control show-all"
+  | "window toggle-float"
+  | "layout balance";
+
 type EtherWmSubcommand =
   | "focus"
   | "move"
@@ -105,6 +125,9 @@ const launchApp = (appName: Apps) => `open -a ${appName}`;
 const quoteShellArg = (value: string) => `'${value.replaceAll("'", `'"'"'`)}'`;
 
 export const shell = {
+  rift: (...commands: RiftCommand[]) =>
+    commands.map((cmd) => `${RIFT_CLI_BIN} execute ${cmd}`).join(" && "),
+
   paneru: (...commands: PaneruCommand[]) =>
     commands.map((command) => runPaneru(command)).join(" && "),
 

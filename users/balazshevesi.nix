@@ -1,6 +1,7 @@
 { config, ... }: {
   imports = [
-    ../features/aerospace/home.nix
+    # ../features/aerospace/home.nix
+    ../features/rift/home.nix
     ../features/codebook/home.nix
     ../features/codex/home.nix
     # ../features/paneru/home.nix
